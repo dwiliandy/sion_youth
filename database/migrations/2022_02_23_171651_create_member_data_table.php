@@ -20,8 +20,10 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('birth_place');
             $table->boolean('baptize');
+            $table->boolean('is_active');
             $table->boolean('sidi');
             $table->string('group');
+            $table->string('family_name');
         });
     }
 

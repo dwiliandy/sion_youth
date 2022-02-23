@@ -22,3 +22,7 @@
 .btn-login:hover{
   background: #6e3abd;
 }
+
+a.dropdown-item:hover {
+  background-color: red;
+}
