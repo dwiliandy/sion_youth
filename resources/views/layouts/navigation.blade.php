@@ -32,6 +32,9 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="#">Kontribusi</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="#">Struktur Organisasi</a>
                 </li>
                 <li class="nav-item dropdown">

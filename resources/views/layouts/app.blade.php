@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="g-sidenav-show bg-gray-100">
+<body class="g-sidenav-show bg-gray-100 d-flex flex-column min-vh-100">
     @include('layouts.navigation')
     <main>
         <div class="container-fluid py-4">
@@ -30,5 +30,6 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 </body>
+@include('layouts.footer')
 
 </html>
