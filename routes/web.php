@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\Admins\GroupController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
+  Route::resource('/groups', 'Admins\GroupController');
+
+});
