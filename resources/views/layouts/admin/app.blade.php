@@ -11,7 +11,7 @@
         {{ env('APP_NAME') }} | {{ $title }}
     </title>
 
-    @yield('styles')
+    
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -25,6 +25,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('admin_template') }}/css/sb-admin-2.min.css" rel="stylesheet">
+    @stack('css')
 </head>
 
 <body id="page-top">
@@ -71,16 +72,16 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('admin_template') }}/vendor/jquery/jquery.min.js"></script>
-    <script src="{{ asset('admin_template') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+  </body>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ asset('admin_template') }}/vendor/jquery/jquery.min.js"></script>
+  <script src="{{ asset('admin_template') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('admin_template') }}/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="{{ asset('admin_template') }}/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('admin_template') }}/js/sb-admin-2.min.js"></script>
-
-</body>
-
+  <!-- Custom scripts for all pages-->
+  <script src="{{ asset('admin_template') }}/js/sb-admin-2.min.js"></script>
+  @stack('js')
 </html>
