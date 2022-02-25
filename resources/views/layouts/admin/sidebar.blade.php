@@ -30,6 +30,14 @@
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item {{ Request::routeIs('groups*') ? 'active' : '' }}">
+    
+    <a class="nav-link" href="{{ route('groups.index') }}">
+        <i class="fas fa-church"></i>
+        <span>Data Kolom </span>
+    </a>
+       
+</li>
   <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
           aria-expanded="true" aria-controls="collapseTwo">

@@ -2,10 +2,6 @@
     'title' =>'Admin Dashboard'
 ])
 
-@push('css')
-<link href="{{ asset('admin_template') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-@endpush
-
 @section('content')
 <div class="container-fluid">
 
@@ -41,13 +37,4 @@
 
 </div>
 
-@push('js')
-  
-
-<script src="{{ asset('admin_template') }}/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="{{ asset('admin_template') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{ asset('admin_template') }}/js/demo/datatables-demo.js"></script>
-@endpush
 @endsection
