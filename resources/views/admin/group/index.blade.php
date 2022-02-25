@@ -18,15 +18,15 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                       <tr>
-                          <th style="width:10%">#</th>
                           <th>Kolom</th>
+                          <th>Jumlah Anggota</th>
                       </tr>
                   </thead>
                   <tbody>
                     @foreach ($groups as $group)
                       <tr>
-                        <td>{{ $loop->index+1 }}</td>
                         <td>{{ $group->name }}</td>
+                        <td>{{ $group->member_count() }}</td>
                       </tr>
                     @endforeach
                   </tbody>
@@ -36,5 +36,9 @@
   </div>
 
 </div>
+
+<script>
+  
+</script>
 
 @endsection

@@ -12,4 +12,8 @@ class Group extends Model
     protected $fillable = [
       'name',
   ];
+
+  public function member_count(){
+    return MemberData::where("group", $this->name)->count();
+  }
 }
