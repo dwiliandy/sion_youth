@@ -37,6 +37,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 @include('layouts.admin.topbar')
+                @include('components.flash-message')
                 @yield('content')
             </div>
             @include('layouts.admin.footer')

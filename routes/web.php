@@ -28,12 +28,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     return view('admin.dashboard');
   })->name('dashboard');
 
-  #Single Route
+  #Group
+  Route::resource('/groups', 'Admins\GroupController');
   Route::post('/group/edit', [GroupController::class,'editGroup'])->name('edit-group');
 
   
   #Resource
-  Route::resource('/groups', 'Admins\GroupController');
   Route::resource('/member_data', 'Admins\MemberDataController');
 
 });
