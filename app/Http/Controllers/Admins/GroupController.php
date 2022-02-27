@@ -12,4 +12,16 @@ class GroupController extends Controller
       $groups = Group::all();
       return view('admin.group.index', compact(['groups']));
     }
+
+    public function editGroup(Request $request){
+      if($request->action == 'add'){
+        dd('add');
+      }else{
+        dd('remove');
+      }
+    }
+
+    public function removeGroup($request){
+
+    }
 }

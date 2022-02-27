@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\Admins\GroupController;
+use App\Http\Controllers\Admins\GroupController;
 
 
 /*
@@ -28,7 +28,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
     return view('admin.dashboard');
   })->name('dashboard');
 
+  #Single Route
+  Route::post('/group/edit', [GroupController::class,'editGroup'])->name('edit-group');
+
   
+  #Resource
   Route::resource('/groups', 'Admins\GroupController');
+  Route::resource('/member_data', 'Admins\MemberDataController');
 
 });

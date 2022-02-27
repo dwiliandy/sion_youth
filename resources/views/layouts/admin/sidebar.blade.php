@@ -32,9 +32,13 @@
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item {{ Request::routeIs('groups*') ? 'active' : '' }}">
     
+    <a class="nav-link" href="{{ route('member_data.index') }}">
+        <i class="fas fa-users"></i>
+        <span>Anggota </span>
+    </a>
     <a class="nav-link" href="{{ route('groups.index') }}">
         <i class="fas fa-church"></i>
-        <span>Data Kolom </span>
+        <span>Kolom </span>
     </a>
        
 </li>
