@@ -16,7 +16,7 @@
     
       <a class="nav-link" href="{{ route('dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard </span><span class="badge badge-danger">3</span> 
+          <span>Dashboard </span>
       </a>
          
   </li>
@@ -39,6 +39,10 @@
     <a class="nav-link" href="{{ route('groups.index') }}">
         <i class="fas fa-church"></i>
         <span>Kolom </span>
+    </a>
+    <a class="nav-link" href="{{ route('admin.posts.index') }}">
+        <i class="fas fa-newspaper"></i>
+        <span>Khotbah dan Artikel </span><span class="badge badge-danger">{{ DB::table('posts')->where('published',false)->count() }}</span> 
     </a>
        
 </li>

@@ -32,8 +32,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   #Group
   Route::resource('/groups', 'Admins\GroupController');
   Route::post('/group/edit', [GroupController::class,'editGroup'])->name('edit-group');
-
   
+  #Post
+  Route::resource('/posts', 'Admins\PostController', ['names' => 'admin.posts']);
+  Route::post('/posts/approve_data/{post}', [GroupController::class,'approveData'])->name('approve-data');
   #Resource
   Route::resource('/member_data', 'Admins\MemberDataController');
 
