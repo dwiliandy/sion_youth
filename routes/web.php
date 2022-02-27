@@ -16,11 +16,12 @@ use App\Http\Controllers\Admins\GroupController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+  return view('welcome');
+})->name('root');
 
 
 require __DIR__.'/auth.php';
+Route::resource('/posts', 'PostsController');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   
@@ -35,5 +36,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   
   #Resource
   Route::resource('/member_data', 'Admins\MemberDataController');
+
 
 });

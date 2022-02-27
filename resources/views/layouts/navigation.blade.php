@@ -32,7 +32,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Kontribusi</a>
+                  <a class="nav-link" href="{{ route('posts.create') }}">Kontribusi</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Struktur Organisasi</a>
