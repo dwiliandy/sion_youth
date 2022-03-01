@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('root') }}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -27,8 +27,8 @@
                         Konten
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Renungan</a></li>
-                        <li><a class="dropdown-item" href="#">Artikel</a></li>
+                        <li><a class="dropdown-item" href="{{ route('khotbah') }}">Renungan</a></li>
+                        <li><a class="dropdown-item" href="{{ route('article') }}">Artikel</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -47,6 +47,9 @@
                       <li><a class="dropdown-item" href="#">Kegiatan</a></li>
                   </ul>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('prayers.index') }}">Doa</a>
+            </li>
             </ul>
             @auth
             <a class="btn btn-outline-danger auth-btn" href="{{ route('logout') }}" onclick="event.preventDefault();

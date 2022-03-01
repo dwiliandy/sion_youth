@@ -14,7 +14,8 @@ class PrayerController extends Controller
      */
     public function index()
     {
-        //
+        $prayers = Prayer::latest()->get();
+        return view('prayers.index', compact('prayers'));
     }
 
     /**

@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\GroupController;
 use App\Http\Controllers\CriticismController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrayerController;
+use App\Http\Controllers\DashboardController;
+
 
 
 /*
@@ -19,11 +22,15 @@ use App\Http\Controllers\PrayerController;
 
 Route::get('/', function () {
   return view('welcome');
-})->name('root');
+});
 
+Route::get('/', [DashboardController::class, 'welcome'])->name('root');
 
 require __DIR__.'/auth.php';
-Route::resource('/posts', 'PostsController');
+Route::resource('/posts', 'PostController');
+Route::get('articles', [PostController::class, 'getArticles'])->name('article');
+Route::get('sermons', [PostController::class, 'getKhotbah'])->name('khotbah');
+
 Route::resource('/prayers', 'PrayerController');
 Route::post('/criticism', [CriticismController::class, 'store'])->name('criticism.store');
 
