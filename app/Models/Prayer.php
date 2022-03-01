@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Criticism extends Model
+class Prayer extends Model
 {
     use HasFactory;
-
     protected $fillable = [
       'body',
       'name'

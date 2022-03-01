@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\GroupController;
+use App\Http\Controllers\CriticismController;
+use App\Http\Controllers\PrayerController;
 
 
 /*
@@ -22,6 +24,8 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 Route::resource('/posts', 'PostsController');
+Route::resource('/prayers', 'PrayerController');
+Route::post('/criticism', [CriticismController::class, 'store'])->name('criticism.store');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   

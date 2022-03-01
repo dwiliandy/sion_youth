@@ -34,18 +34,15 @@
       main{
         background-color: #eee;
       }
+      
     </style>
 
 </head>
 
 <body class="g-sidenav-show bg-gray-100 d-flex flex-column min-vh-100">
+      @include('components.flash-message-guest')
     @include('layouts.navigation')
     <main>
-        <div class="container">
-          <div class="col-md-4">
-            @include('components.flash-message-guest')
-          </div>
-        </div>
         @yield('content')
         <div class="container footer">
           @include('layouts.footer')

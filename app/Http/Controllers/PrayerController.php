@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Prayer;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PrayerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +35,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Prayer::create($request->all());
+      return redirect()->route('root')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Prayer  $prayer
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Prayer $prayer)
     {
         //
     }
@@ -52,10 +53,10 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Prayer  $prayer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Prayer $prayer)
     {
         //
     }
@@ -64,10 +65,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Prayer  $prayer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Prayer $prayer)
     {
         //
     }
@@ -75,10 +76,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param  \App\Models\Prayer  $prayer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Prayer $prayer)
     {
         //
     }
