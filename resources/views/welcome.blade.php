@@ -54,33 +54,64 @@
 </div>
 <div class="container">
   <div class="row justify-content-start mt-3">
-    <div class="col-lg-9 mb-2">
+    <div class="col-lg-9">
       <div class="card dashboard service-section d-flex justify-content-around">
         <div class="card-body d-flex flex-column dashboard-card">
-          <h5 class="home">Khotbah</h5>
+          <h5 class="home">Jadwal Ibadah</h5>
           <div class="row justify-content-center">
-            @foreach ($khotbahs as $khotbah)
-            <div class="col-lg-4  pt-2">
+            <div class="col-lg-3 pt-2">
               <div class="card">
-                <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{ $khotbah->title }}</h5>
-                  <small>{{ date('d-m-y', strtotime($khotbah->created_at)) }}</small>
+                  <h5 class="card-title">Rayon</h5>
+                  <small>10-10-10</small>
                   <hr>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}" class="btn btn-login">Baca Selengkapnya</a>
+                  <p class="card-text">Tempat Ibadah : asdasdas
+                    <br>Khadim : asdasdsadsa
+                  </p>
                 </div>
               </div>
             </div>
-            @endforeach
-            <div class="py-3 d-flex align-items-end flex-column">
-              <a class="text-right" href="{{ route('khotbah') }}">Lihat Semua Khotbah</a>
+            <div class="col-lg-3 pt-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Rayon</h5>
+                  <small>10-10-10</small>
+                  <hr>
+                  <p class="card-text">Tempat Ibadah : asdasdas
+                    <br>Khadim : asdasdsadsa
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 pt-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Rayon</h5>
+                  <small>10-10-10</small>
+                  <hr>
+                  <p class="card-text">Tempat Ibadah : asdasdas
+                    <br>Khadim : asdasdsadsa
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 pt-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Rayon</h5>
+                  <small>10-10-10</small>
+                  <hr>
+                  <p class="card-text">Tempat Ibadah : asdasdas
+                    <br>Khadim : asdasdsadsa
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-3  mb-2">
+    <div class="col-lg-3">
       <div class="card dashboard birthday-card">
         <div class="card-body d-flex flex-column dashboard-card">
           <h5 class="home">Ulang Tahun</h5>
@@ -106,58 +137,67 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
   <div class="row">
-    <div class="col-lg-9 mt-2 mb-2">
-      <div class="card dashboard service-section mt-2 d-flex justify-content-around">
+    <div class="col-lg-12 mb-2">
+      <div class="card dashboard service-section d-flex justify-content-around">
         <div class="card-body d-flex flex-column dashboard-card">
-          <h5 class="home">Artikel</h5>
+          <h5 class="home">Khotbah</h5>
           <div class="row justify-content-center">
-            @foreach ($articles as $article)
-            <div class="col-lg-4  pt-2">
-              <div class="card">
-                <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{ $article->title }}</h5>
-                  <small>{{ date('d-m-y', strtotime($article->created_at)) }}</small>
-                  <hr>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="{{ route('posts.show', ['post' => $article->id]) }}" class="btn btn-login">Baca Selengkapnya</a>
+            @if ($khotbahs->count() > 0)
+              @foreach ($khotbahs as $khotbah)
+              <div class="col-lg-4  pt-2">
+                <div class="card">
+                  <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ $khotbah->title }}</h5>
+                    <small>{{ date('d-m-y', strtotime($khotbah->created_at)) }}</small>
+                    <hr>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}" class="btn btn-login">Baca Selengkapnya</a>
+                  </div>
                 </div>
               </div>
-            </div>
-            @endforeach
-            <div class="py-3 d-flex align-items-end flex-column">
-              <a class="text-right" href="{{ route('article') }}">Lihat Semua Artikel</a>
-            </div>
+              @endforeach
+              <div class="py-3 d-flex align-items-end flex-column">
+                <a class="text-right" href="{{ route('khotbah') }}">Lihat Semua Khotbah</a>
+              </div>
+            @else
+            <p class="text-center"><strong>Tidak ada Data</strong></p>
+            @endif
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 mt-2 mb-2">
+  </div>
+  <div class="row">
+    <div class="col-lg-12 mt-2 mb-2">
       <div class="card dashboard service-section mt-2 d-flex justify-content-around">
         <div class="card-body d-flex flex-column dashboard-card">
-          <h5 class="home">Info Ibadah Minggu Ini</h5>
-          <h5>Rayon 1</h5>
-          <p>Tempat :</p>
-          <p>Atas Nama :</p>
-          <p>Jam :</p>
-          <hr>
-          <h5>Rayon 2</h5>
-          <p>Tempat :</p>
-          <p>Atas Nama :</p>
-          <p>Jam :</p>
-          <hr>
-          <h5>Rayon 3</h5>
-          <p>Tempat :</p>
-          <p>Atas Nama :</p>
-          <p>Jam :</p>
-          <hr>
-          <h5>Umum</h5>
-          <p>Tempat :</p>
-          <p>Atas Nama :</p>
-          <p>Jam :</p>
-          <hr>
+          <h5 class="home">Artikel</h5>
+          <div class="row justify-content-center">
+            @if ($articles->count() > 0)
+              @foreach ($articles as $article)
+              <div class="col-lg-4  pt-2">
+                <div class="card">
+                  <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ $article->title }}</h5>
+                    <small>{{ date('d-m-y', strtotime($article->created_at)) }}</small>
+                    <hr>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="{{ route('posts.show', ['post' => $article->id]) }}" class="btn btn-login">Baca Selengkapnya</a>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+              <div class="py-3 d-flex align-items-end flex-column">
+                <a class="text-right" href="{{ route('article') }}">Lihat Semua Artikel</a>
+              </div>
+            @else
+              <p class="text-center"><strong>Tidak ada Data</strong></p>
+            @endif
+          </div>
         </div>
       </div>
     </div>

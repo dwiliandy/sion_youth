@@ -6,5 +6,14 @@
       </a>
       <span class="text-muted">Copyright &copy; Omega {{ now()->year }}</span>
     </div>
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3">
+        <a class="text-muted" href="{{  URL::to('https://www.facebook.com/youthsionsentrum')  }}" target="_blank"><img width="24" height="24" src="{{ asset('fb.png') }}" alt=""></a>
+      </li>
+      <li class="ms-3">
+        <a class="text-muted" href="{{  URL::to('https://www.instagram.com/sionsentrumyouth/')  }}" target="_blank"><img width="24" height="24" src="{{ asset('ig.png') }}" alt=""></a>
+      </li>
+    </ul>
+
 
   </footer>
