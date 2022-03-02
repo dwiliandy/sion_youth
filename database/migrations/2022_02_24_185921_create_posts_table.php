@@ -17,6 +17,7 @@ return new class extends Migration
         $table->id();
         $table->string('title');
         $table->string('author')->nullable();
+        $table->text('excerpt');
         $table->boolean('published')->default(false);
         $table->datetime('published_at')->nullable(true);
         $table->text('body');

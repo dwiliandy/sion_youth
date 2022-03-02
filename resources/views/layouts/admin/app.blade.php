@@ -27,6 +27,9 @@
     <link href="{{ asset('admin_template') }}/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="{{ asset('admin_template') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
+    <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
     @stack('css')
 </head>
 

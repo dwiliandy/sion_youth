@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -23,8 +24,21 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-      Post::create($request->all());
+      $validatedData = $request->validate([
+        'title' => 'required|max:255',
+        'author' => 'max:255',
+        'category_id' => 'required',
+        'body' => 'required'
+      ],
+      [
+          'title.required' => 'Judul harus diisi',
+          'body.required' => 'Isi Tulisan harus diisi',
+          'title.max' => 'Judul maksimal 255 karakter',
+          'author.max' => 'Penulis maksimal 255 karakter',
 
+      ]);
+      $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+      Post::create($validatedData);
       return redirect()->route('root')->with('success', 'Data berhasil ditambahkan!');
     }
 

@@ -49,7 +49,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active  img-fluid">
-                        <img src="{{ asset('spiderman.jpg') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('spiderman.jpeg') }}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item  img-fluid">
                         <img src="{{ asset('spiderman.jpg') }}" class="d-block w-100" alt="...">
@@ -179,8 +179,7 @@
                                     <h5 class="card-title">{{ $khotbah->title }}</h5>
                                     <small>{{ Carbon\Carbon::parse($khotbah->published_at)->isoFormat('dddd, D MMMM Y H:m') }}</small>
                                     <hr>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
+                                    <p class="card-text">{{$khotbah->excerpt}}</p>
                                     <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}"
                                         class="btn btn-login">Baca Selengkapnya</a>
                                 </div>
@@ -213,8 +212,7 @@
                                     <h5 class="card-title">{{ $article->title }}</h5>
                                     <small>{{ Carbon\Carbon::parse($article->published_at)->isoFormat('dddd, D MMMM Y H:m') }}</small>
                                     <hr>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
+                                    <p class="card-text">{{$article->excerpt}}</p>
                                     <a href="{{ route('posts.show', ['post' => $article->id]) }}"
                                         class="btn btn-login">Baca Selengkapnya</a>
                                 </div>
