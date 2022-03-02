@@ -27,27 +27,25 @@
       body{
         overflow-x: hidden;
       }
-      .page{
-        min-height: 100vh;
-      }
 
-      main{
-        background-color: #eee;
-      }
-      
     </style>
 
 </head>
 
-<body class="g-sidenav-show bg-gray-100 d-flex flex-column min-vh-100">
-      @include('components.flash-message-guest')
-    @include('layouts.navigation')
-    <main>
-        @yield('content')
-        <div class="container footer">
-          @include('layouts.footer')
-        </div>
-    </main>
+<body>
+  <div class="min-vh-100 d-flex flex-column justify-content-between" style="background-color: #eee">
+      <div> 
+        @include('components.flash-message-guest')
+        @include('layouts.navigation')
+        <main>  
+            @yield('content')
+        </main>
+      </div> 
+      <div class="container footer mt-auto">
+        @include('layouts.footer')
+      </div>
+    </div>
+  
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
