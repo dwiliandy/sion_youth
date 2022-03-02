@@ -26,7 +26,7 @@
                 </div>
                 @endforeach
               @else
-              <p class="text-center"><strong>Tidak ada Data</strong></p>
+                <p class="text-center"><strong>Tidak ada Data</strong></p>
               @endif
             </div>
           </div>

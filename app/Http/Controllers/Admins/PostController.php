@@ -42,7 +42,7 @@ class PostController extends Controller
 
       ]);
 
-      // $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+      $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
 
       Post::where('id', $post->id)->update($validatedData);
       return redirect()->route('admin.posts.index')->with(['success' => 'Data berhasil diubah']);
