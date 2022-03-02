@@ -1,4 +1,4 @@
-@extends('Layouts.app',[
+@extends('layouts.app',[
 'title' =>'Detail Artikel atau Khotbah'
 ])
 
