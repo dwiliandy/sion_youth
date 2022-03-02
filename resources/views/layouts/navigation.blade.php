@@ -1,7 +1,4 @@
-@push('style')
 
-
-@endpush
 <style>
     .auth-btn {
         border-radius: 20px;
