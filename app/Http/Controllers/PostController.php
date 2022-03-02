@@ -29,12 +29,12 @@ class PostController extends Controller
     }
 
     public function getArticles(){
-      $articles = Category::where('name','artikel')->first()->posts;
+      $articles = Category::where('name','artikel')->first()->posts->where('published',true);
       return view('posts.article', compact('articles'));
 
     }
     public function getKhotbah(){
-      $khotbahs = Category::where('name','khotbah')->first()->posts;
+      $khotbahs = Category::where('name','khotbah')->first()->posts->where('published',true);
       return view('posts.khotbah', compact('khotbahs'));
 
     }

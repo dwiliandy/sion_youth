@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\GroupController;
+use App\Http\Controllers\Admins\PostController  as AdminsPostController;
 use App\Http\Controllers\CriticismController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrayerController;
@@ -46,7 +47,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   
   #Post
   Route::resource('/posts', 'Admins\PostController', ['names' => 'admin.posts']);
-  Route::post('/posts/approve_data/{post}', [GroupController::class,'approveData'])->name('approve-data');
+  Route::post('/posts/publish_data/{post}', [AdminsPostController::class,'publishData'])->name('publish-data');
+  Route::post('/posts/unpublish_data/{post}', [AdminsPostController::class,'unpublishData'])->name('unpublish-data');
+
   #Resource
   Route::resource('/member_data', 'Admins\MemberDataController');
 

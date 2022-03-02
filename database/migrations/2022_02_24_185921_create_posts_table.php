@@ -18,7 +18,7 @@ return new class extends Migration
         $table->string('title');
         $table->string('author')->nullable();
         $table->boolean('published')->default(false);
-        $table->date('published_at')->nullable(true);
+        $table->datetime('published_at')->nullable(true);
         $table->text('body');
         $table->timestamps();
         $table->unsignedBigInteger('category_id');

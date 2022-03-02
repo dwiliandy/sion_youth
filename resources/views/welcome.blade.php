@@ -177,7 +177,7 @@
                                 <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $khotbah->title }}</h5>
-                                    <small>{{ date('d-m-y', strtotime($khotbah->created_at)) }}</small>
+                                    <small>{{ Carbon\Carbon::parse($khotbah->published_at)->isoFormat('dddd, D MMMM Y H:m') }}</small>
                                     <hr>
                                     <p class="card-text">Some quick example text to build on the card title and make up
                                         the bulk of the card's content.</p>
@@ -211,7 +211,7 @@
                                 <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $article->title }}</h5>
-                                    <small>{{ date('d-m-y', strtotime($article->created_at)) }}</small>
+                                    <small>{{ Carbon\Carbon::parse($article->published_at)->isoFormat('dddd, D MMMM Y H:m') }}</small>
                                     <hr>
                                     <p class="card-text">Some quick example text to build on the card title and make up
                                         the bulk of the card's content.</p>
