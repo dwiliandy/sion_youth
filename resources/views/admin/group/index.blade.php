@@ -116,24 +116,6 @@
     }
   }
 </script>
-{{-- <script>
-  $("#createForm").on("submit", function (e) {
-      let formData = new FormData(this);
-      e.preventDefault();
-      console.log(formData);
-      $.ajax({
-        url: "/admin/group/edit",
-        method: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: (response) => {
-          $('#createForm').trigger("reset");
-          flash("success", response.success);
-        }
-      });
-    });
-</script> --}}
   
 @endpush
 @endsection

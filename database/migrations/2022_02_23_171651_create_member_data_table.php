@@ -18,13 +18,15 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->date('birth_date');
-            $table->string('unique_number')->unique();
             $table->string('birth_place');
             $table->boolean('baptize');
             $table->boolean('is_active');
             $table->boolean('sidi');
             $table->string('group');
             $table->string('family_name');
+            $table->enum('sex', ['male','female']);
+            $table->string('id_number');
+            
         });
     }
 

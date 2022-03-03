@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('family_name');
             $table->string('name');
             $table->time('time');
+            $table->string('group');
             $table->unsignedBigInteger('sector_id');
             $table->foreign('sector_id')->references('id')->on('sectors');
             $table->timestamps();

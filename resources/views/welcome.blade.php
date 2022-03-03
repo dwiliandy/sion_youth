@@ -78,55 +78,26 @@
             <div class="card dashboard service-section d-flex justify-content-around">
                 <div class="card-body d-flex flex-column dashboard-card">
                     <h5 class="home">Jadwal Ibadah</h5>
-                    <div class="row justify-content-center">
-                        <div class="col-lg-3 pt-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rayon</h5>
-                                    <small>10-10-10</small>
-                                    <hr>
-                                    <p class="card-text">Tempat Ibadah : asdasdas
-                                        <br>Khadim : asdasdsadsa
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pt-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rayon</h5>
-                                    <small>10-10-10</small>
-                                    <hr>
-                                    <p class="card-text">Tempat Ibadah : asdasdas
-                                        <br>Khadim : asdasdsadsa
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pt-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rayon</h5>
-                                    <small>10-10-10</small>
-                                    <hr>
-                                    <p class="card-text">Tempat Ibadah : asdasdas
-                                        <br>Khadim : asdasdsadsa
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 pt-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rayon</h5>
-                                    <small>10-10-10</small>
-                                    <hr>
-                                    <p class="card-text">Tempat Ibadah : asdasdas
-                                        <br>Khadim : asdasdsadsa
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row justify-content-start">
+                      @if ($schedules->count() > 0)
+                        @foreach ($schedules as $schedule)
+                          <div class="col-lg-6 pt-2">
+                              <div class="card">
+                                  <div class="card-body">
+                                      <h5 class="card-title">{{ $schedule->sector->name }}</h5>
+                                      <small>{{ Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM Y') }}</small>
+                                      <small> {{ Carbon\Carbon::parse($schedule->time)->isoFormat('HH:mm') }}</small>
+                                      <hr>
+                                      <p class="card-text">Tempat Ibadah : {{ $schedule->family_name }} ({{ $schedule->name }})</p>
+                                      <p class="card-text">Kolom : {{ $schedule->group }}</p>
+                                      <p class="card-text">Khadim : {{ $schedule->preacher }}</p>
+                                  </div>
+                              </div>
+                          </div>
+                        @endforeach
+                      @else
+                      <p class="text-center"><strong>Tidak ada Data</strong></p>
+                      @endif
                     </div>
                 </div>
             </div>
@@ -169,7 +140,7 @@
             <div class="card dashboard service-section d-flex justify-content-around">
                 <div class="card-body d-flex flex-column dashboard-card">
                     <h5 class="home">Khotbah</h5>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-start">
                         @if ($khotbahs->count() > 0)
                         @foreach ($khotbahs as $khotbah)
                         <div class="col-lg-4  pt-2">
@@ -202,7 +173,7 @@
             <div class="card dashboard service-section d-flex justify-content-around">
                 <div class="card-body d-flex flex-column dashboard-card">
                     <h5 class="home">Artikel</h5>
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-start">
                         @if ($articles->count() > 0)
                         @foreach ($articles as $article)
                         <div class="col-lg-4  pt-2">

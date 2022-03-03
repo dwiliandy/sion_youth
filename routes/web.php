@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\GroupController;
 use App\Http\Controllers\Admins\PostController  as AdminsPostController;
+use App\Http\Controllers\Admins\SectorController  as AdminsSectorController;
+use App\Http\Controllers\Admins\ScheduleController  as AdminsScheduleController;
 use App\Http\Controllers\CriticismController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrayerController;
@@ -35,6 +37,8 @@ Route::get('sermons', [PostController::class, 'getKhotbah'])->name('khotbah');
 Route::resource('/prayers', 'PrayerController');
 Route::post('/criticism', [CriticismController::class, 'store'])->name('criticism.store');
 
+
+#Admin Route
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   
   Route::get('/dashboard', function () {
@@ -50,7 +54,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   Route::post('/posts/publish_data/{post}', [AdminsPostController::class,'publishData'])->name('publish-data');
   Route::post('/posts/unpublish_data/{post}', [AdminsPostController::class,'unpublishData'])->name('unpublish-data');
 
-  #Resource
+  #Sector
+  Route::resource('/sectors', 'Admins\SectorController', ['names' => 'admin.sectors']);
+  Route::get('/sectors/{sector}/schedule', [AdminsSectorController::class,'getSchedule'])->name('get-schedule');
+  Route::post('/sectors/update-data', [AdminsSectorController::class,'updateData'])->name('update-data');
+  
+  #Schedule
+  Route::resource('/schedules', 'Admins\ScheduleController', ['names' => 'admin.schedules']);
+  Route::get('/schedules/create/{sector}', [AdminsScheduleController::class,'create'])->name('admin.schedules.create');
+
+  #Member Data
   Route::resource('/member_data', 'Admins\MemberDataController');
 
 

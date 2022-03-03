@@ -21,6 +21,7 @@ return new class extends Migration
         $table->boolean('published')->default(false);
         $table->datetime('published_at')->nullable(true);
         $table->text('body');
+        $table->string('image')->nullable();
         $table->timestamps();
         $table->unsignedBigInteger('category_id');
         $table->foreign('category_id')->references('id')->on('categories');

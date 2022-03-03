@@ -44,6 +44,10 @@
         <i class="fas fa-newspaper"></i>
         <span>Khotbah dan Artikel </span><span class="badge badge-danger">{{ DB::table('posts')->where('published',false)->count() }}</span> 
     </a>
+    <a class="nav-link" href="{{ route('admin.sectors.index') }}">
+        <i class="fas fa-users"></i>
+        <span>Kelompok</span>
+    </a>
        
 </li>
   <li class="nav-item">
