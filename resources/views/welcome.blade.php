@@ -108,27 +108,15 @@
                     <h5 class="home">Ulang Tahun</h5>
                     <table class="table  table-bordered">
                         <tbody>
+                          @foreach ($member_birthday as $birthday)
                             <tr>
-                                <td class="text-center"><span><i class="fas fa-user fa-4x"></i></span></td>
+                              <td class="text-center"><span><i class="fas fa-user fa-4x"></i></span></td>
                                 <td>
-                                    <p>Dwiliandi Omega
-                                        <br>5 Januari</p>
+                                    <p>{{ ucwords($birthday->name) }}
+                                        <br>{{ Carbon\Carbon::parse($birthday->birth_date)->isoFormat('D MMMM') }}</p>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="text-center"><span><i class="fas fa-user fa-4x"></i></span></td>
-                                <td>
-                                    <p>Dwiliandi Omega
-                                        <br>5 Januari</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center"><span><i class="fas fa-user fa-4x"></i></span></td>
-                                <td>
-                                    <p>Dwiliandi Omega
-                                        <br>5 Januari</p>
-                                </td>
-                            </tr>
+                          @endforeach
                         </tbody>
                     </table>
                 </div>

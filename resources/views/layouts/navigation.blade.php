@@ -16,10 +16,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('root') }}">Home</a>
+                    <a class="nav-link {{ Request::routeIs('root') ? 'active' : '' }}" aria-current="page" href="{{ route('root') }}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle {{ (Request::routeIs('khotbah') || Request::routeIs('article')) ? 'active' : '' }}" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Konten
                     </a>
@@ -29,7 +29,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('posts.create') }}">Kontribusi</a>
+                  <a class="nav-link {{ Request::routeIs('posts.create') ? 'active' : '' }}" href="{{ route('posts.create') }}">Kontribusi</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Struktur Organisasi</a>
@@ -45,7 +45,7 @@
                   </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ route('prayers.index') }}">Doa</a>
+                <a class="nav-link {{ Request::routeIs('prayers.index') ? 'active' : '' }}" aria-current="page" href="{{ route('prayers.index') }}">Doa</a>
             </li>
             </ul>
             @auth

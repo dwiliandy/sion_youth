@@ -19,11 +19,11 @@ return new class extends Migration
             $table->string('name');
             $table->date('birth_date');
             $table->string('birth_place');
-            $table->boolean('baptize');
-            $table->boolean('is_active');
-            $table->boolean('sidi');
+            $table->boolean('is_active')->default(true);
             $table->string('group');
             $table->string('family_name');
+            $table->enum('baptize', ['already','not_yet']);
+            $table->enum('sidi', ['already','not_yet']);
             $table->enum('sex', ['male','female']);
             $table->string('id_number');
             
