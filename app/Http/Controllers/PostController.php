@@ -28,15 +28,22 @@ class PostController extends Controller
         'title' => 'required|max:255',
         'author' => 'max:255',
         'category_id' => 'required',
-        'body' => 'required'
+        'body' => 'required',
+        'image' => 'image'
       ],
       [
           'title.required' => 'Judul harus diisi',
           'body.required' => 'Isi Tulisan harus diisi',
           'title.max' => 'Judul maksimal 255 karakter',
           'author.max' => 'Penulis maksimal 255 karakter',
+          'image.image' => 'File harus berbentuk gambar'
 
       ]);
+
+      if($request->file('image')){
+        $validatedData['image'] = $request->file('image')->store('post');
+      }
+      
       $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
       Post::create($validatedData);
       return redirect()->route('root')->with('success', 'Data berhasil ditambahkan!');

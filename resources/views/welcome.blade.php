@@ -137,7 +137,11 @@
                         @foreach ($khotbahs as $khotbah)
                         <div class="col-lg-4  pt-2">
                             <div class="card">
+                              @if ($khotbah->image)
+                                <img src="{{ asset('storage/'. $khotbah->image) }}" alt="">
+                              @else
                                 <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
+                              @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $khotbah->title }}</h5>
                                     <small>{{ Carbon\Carbon::parse($khotbah->published_at)->isoFormat('dddd, D MMMM Y H:m') }}</small>
@@ -170,7 +174,11 @@
                         @foreach ($articles as $article)
                         <div class="col-lg-4  pt-2">
                             <div class="card">
+                              @if ($article->image)
+                                <img src="{{ asset('storage/'. $article->image) }}" alt="">
+                              @else
                                 <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
+                              @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $article->title }}</h5>
                                     <small>{{ Carbon\Carbon::parse($article->published_at)->isoFormat('dddd, D MMMM Y H:m') }}</small>

@@ -8,12 +8,13 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 
 class PostController extends Controller
 {
     public function index(){
-      $posts = Post::with('category')->get();
+      $posts = Post::orderBy('created_at','desc')->with('category')->get();
       return view('admin.post.index', compact(['posts']));
     }
     
@@ -32,15 +33,23 @@ class PostController extends Controller
         'title' => 'required|max:255',
         'author' => 'max:255',
         'category_id' => 'required',
-        'body' => 'required'
+        'body' => 'required',
+        'image' => 'image'
       ],
       [
           'title.required' => 'Judul harus diisi',
           'body.required' => 'Isi Tulisan harus diisi',
           'title.max' => 'Judul maksimal 255 karakter',
           'author.max' => 'Penulis maksimal 255 karakter',
-
+          'image.image' => 'File harus berbentuk gambar'
       ]);
+
+      if($request->file('image')){
+        if($post->image){
+          Storage::delete($post->image);
+        }
+        $validatedData['image'] = $request->file('image')->store('post');
+      }
 
       $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
 
@@ -49,6 +58,10 @@ class PostController extends Controller
     }
 
     public function destroy(Post $post){
+      
+      if($post->image){
+        Storage::delete($post->image);
+      }
       Post::destroy($post->id);
       return redirect()->route('admin.posts.index')->with(['success' => 'Data berhasil dihapus']);
     }

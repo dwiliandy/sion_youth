@@ -30,6 +30,9 @@
             </form>
         </div>
           <hr>
+            @if ($post->image)
+              <img src="{{ asset('storage/'. $post->image) }}" alt="">
+            @endif
             <p class="mt-3">{!! $post->body !!}</p>
         </div>
       </div>

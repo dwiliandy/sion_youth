@@ -10,7 +10,9 @@
           <div class="card-body d-flex flex-column dashboard-card">
             <h1>{{ $post->title }}</h1><hr>
                 <a href="{{ route('root') }}"><i class="fas fa-long-arrow-alt-left"> Kembali ke halaman awal</i></a>
-                {{-- <img src="{{ asset('sion-1.jfif') }}" class="card-img-top img-fluid" alt="..."> --}}
+                @if ($post->image)
+                  <img src="{{ asset('storage/'. $post->image) }}" alt="">
+                @endif
                 <p class="mt-3">{!! $post->body !!}</p>
                 <a href="{{ route('root') }}"><i class="fas fa-long-arrow-alt-left"> Kembali ke halaman awal</i></a>
           </div>

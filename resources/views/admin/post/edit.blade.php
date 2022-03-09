@@ -10,7 +10,7 @@
         <div class="card-body d-flex flex-column dashboard-card">
           <h5 class="home">Edit Post</h5>
           <div class="row justify-content-center">
-            <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post">
+            <form action="{{ route('admin.posts.update', ['post' => $post->id]) }}" method="post" enctype="multipart/form-data">
               @csrf
               @method('patch')
                 <div class="mb-3">
@@ -40,6 +40,18 @@
                     </select>
                 </div>
                 <div class="mb-3">
+                  <label for="formFile" class="form-label">Gambar</label>
+                    @error('image')
+                      <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                    @if ($post->image)
+                      <img src="{{ asset('storage/'. $post->image) }}" class="img-preview img-fluid col-sm-5 mb-3 d-block">
+                    @else
+                      <img class="img-preview img-fluid col-sm-5 mb-3">
+                    @endif
+                  <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
+                </div>
+                <div class="mb-3">
                     <label for="body" class="form-label">Isi Tulisan</label>
                     @error('body')
                       <p class="text-danger">{{ $message }}</p>
@@ -58,7 +70,22 @@
   </div>
 </div>
 
-  @push('js')
+@push('js')
+<script>
+  
+  function previewImage(){
+    const image = document.querySelector('#image');
+    const imgPreview = document.querySelector('.img-preview');
 
-  @endpush
+    imgPreview.style.display = 'block';
+    const reader = new FileReader();
+    reader.readAsDataURL(image.files[0]);
+    reader.onload = function(oFREvent){
+      imgPreview.src = oFREvent.target.result;
+    }
+  }
+
+
+</script>
+@endpush
 @endsection
