@@ -6,6 +6,7 @@ use App\Http\Controllers\Admins\PostController  as AdminsPostController;
 use App\Http\Controllers\Admins\SectorController  as AdminsSectorController;
 use App\Http\Controllers\Admins\ScheduleController  as AdminsScheduleController;
 use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataController;
+use App\Http\Controllers\Admins\CriticismController  as AdminsCriticismController;
 use App\Http\Controllers\CriticismController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrayerController;
@@ -67,6 +68,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   #Member Data
   Route::resource('/member_datas', 'Admins\MemberDataController', ['names' => 'admin.member_datas']);
   Route::post('/member_datas/is_active/{member_data}', [AdminsMemberDataController::class,'isActive'])->name('admin.member_datas.is-active');
+
+  #Criticsm
+  Route::get('/criticisms', [AdminsCriticismController::class,'index'])->name('admin.criticism.index');
 
 
 });

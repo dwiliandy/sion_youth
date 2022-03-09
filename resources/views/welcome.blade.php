@@ -106,19 +106,23 @@
             <div class="card dashboard birthday-card">
                 <div class="card-body d-flex flex-column dashboard-card">
                     <h5 class="home">Ulang Tahun</h5>
-                    <table class="table  table-bordered">
+                    @if ($member_birthday->count() > 0)
+                      <table class="table  table-bordered">
                         <tbody>
-                          @foreach ($member_birthday as $birthday)
-                            <tr>
-                              <td class="text-center"><span><i class="fas fa-user fa-4x"></i></span></td>
-                                <td>
-                                    <p>{{ ucwords($birthday->name) }}
-                                        <br>{{ Carbon\Carbon::parse($birthday->birth_date)->isoFormat('D MMMM') }}</p>
-                                </td>
-                            </tr>
-                          @endforeach
+                            @foreach ($member_birthday as $birthday)
+                              <tr>
+                                <td class="text-center"><span><i class="fas fa-user fa-4x"></i></span></td>
+                                  <td>
+                                      <p>{{ ucwords($birthday->name) }}
+                                          <br>{{ Carbon\Carbon::parse($birthday->birth_date)->isoFormat('D MMMM') }}</p>
+                                  </td>
+                              </tr>
+                            @endforeach
                         </tbody>
-                    </table>
+                      </table>
+                    @else
+                      <p class="text-center"><strong>Tidak ada Data</strong></p>
+                    @endif
                 </div>
             </div>
         </div>
