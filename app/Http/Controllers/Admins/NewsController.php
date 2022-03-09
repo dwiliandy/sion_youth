@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Models\News;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -28,6 +29,8 @@ class NewsController extends Controller
           'body.required' => 'Isi Tulisan harus diisi'
       ]);
 
+      $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+
       News::create($validatedData);
       return redirect()->route('admin.news.index')->with('success', 'Data berhasil ditambahkan!');
     }
@@ -46,6 +49,7 @@ class NewsController extends Controller
           'title.required' => 'Judul harus diisi',
           'body.required' => 'Isi Tulisan harus diisi'
       ]);
+      $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
 
       $news->update($validatedData);
       return redirect()->route('admin.news.index')->with('success', 'Data berhasil diubah!');

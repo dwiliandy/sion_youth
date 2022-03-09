@@ -9,6 +9,7 @@ use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataControl
 use App\Http\Controllers\Admins\CriticismController  as AdminsCriticismController;
 use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
 use App\Http\Controllers\CriticismController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrayerController;
 use App\Http\Controllers\DashboardController;
@@ -26,20 +27,30 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
-});
+#Guest Route
+  Route::get('/', function () {
+    return view('welcome');
+  });
+  require __DIR__.'/auth.php';
 
-Route::get('/', [DashboardController::class, 'welcome'])->name('root');
+  Route::get('/', [DashboardController::class, 'welcome'])->name('root');
 
-require __DIR__.'/auth.php';
-Route::resource('/posts', 'PostController');
-Route::get('articles', [PostController::class, 'getArticles'])->name('article');
-Route::get('sermons', [PostController::class, 'getKhotbah'])->name('khotbah');
+  #Post
+  Route::resource('/posts', 'PostController');
+  Route::get('articles', [PostController::class, 'getArticles'])->name('article');
+  Route::get('sermons', [PostController::class, 'getKhotbah'])->name('khotbah');
 
-Route::resource('/prayers', 'PrayerController');
-Route::post('/criticism', [CriticismController::class, 'store'])->name('criticism.store');
+  #Prayer
+  Route::resource('/prayers', 'PrayerController');
 
+  #Criticism
+  Route::post('/criticism', [CriticismController::class, 'store'])->name('criticism.store');
+  
+  #News
+  Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+  Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
+
+#End Guest Route
 
 #Admin Route
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
@@ -77,3 +88,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   Route::resource('/news', 'Admins\NewsController', ['names' => 'admin.news']);
 
 });
+
+#End Admin Route

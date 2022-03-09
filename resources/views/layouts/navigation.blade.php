@@ -40,7 +40,7 @@
                       Berita dan Kegiatan
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Berita</a></li>
+                      <li><a class="dropdown-item" href="{{ route('news.index') }}">Berita</a></li>
                       <li><a class="dropdown-item" href="#">Kegiatan</a></li>
                   </ul>
               </li>
