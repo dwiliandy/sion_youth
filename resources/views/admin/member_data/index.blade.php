@@ -85,18 +85,6 @@
 </div>
 
   @push('js')
-  <script>
-    $('body').on("click", ".btn-edit", function () {
-      var id = $(this).attr("data-id");
-      $.ajax({
-        url: "/admin/sectors/"+ id + "/edit",
-        method: "GET",
-        success: function (response) {
-          $("#modal-edit").modal("show");
-          $("#name").val(response.name);
-        }
-      });
-    });
-  </script>
+  
   @endpush
 @endsection

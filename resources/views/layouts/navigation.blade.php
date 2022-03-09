@@ -1,7 +1,7 @@
 
 <style>
     .auth-btn {
-        border-radius: 20px;
+        border-radius: 5px;
     }
 
 </style>
@@ -49,15 +49,16 @@
             </li>
             </ul>
             @auth
-            <a class="btn btn-outline-danger auth-btn" href="{{ route('logout') }}" onclick="event.preventDefault();
+            <a class="btn btn-outline-warning auth-btn mx-2" href="{{ route('dashboard') }}"><strong>Admin</strong></a>
+            <a class="btn btn-outline-light auth-btn" href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
-                {{ __('LOGOUT') }}
+                <strong>{{ __('LOGOUT') }}</strong>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
             @else
-            <a class="btn btn-outline-warning auth-btn" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
+            <a class="btn btn-outline-light auth-btn" href="{{ route('login') }}"><strong>{{ __('LOGIN') }}</strong></a>
             @endauth
         </div>
     </div>

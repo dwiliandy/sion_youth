@@ -58,6 +58,13 @@
     </a>
   </li>
 
+  <li class="nav-item {{ (Request::routeIs('admin.news.*')) ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.news.index') }}">
+      <i class="fas fa-newspaper"></i>
+      <span>Berita</span>
+    </a>
+  </li>
+
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
       <button class="rounded-circle border-0" id="sidebarToggle"></button>

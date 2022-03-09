@@ -7,6 +7,7 @@ use App\Http\Controllers\Admins\SectorController  as AdminsSectorController;
 use App\Http\Controllers\Admins\ScheduleController  as AdminsScheduleController;
 use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataController;
 use App\Http\Controllers\Admins\CriticismController  as AdminsCriticismController;
+use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
 use App\Http\Controllers\CriticismController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrayerController;
@@ -72,5 +73,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   #Criticsm
   Route::get('/criticisms', [AdminsCriticismController::class,'index'])->name('admin.criticism.index');
 
+  #News
+  Route::resource('/news', 'Admins\NewsController', ['names' => 'admin.news']);
 
 });

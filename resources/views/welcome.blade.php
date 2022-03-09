@@ -73,9 +73,9 @@
     </div>
 </div>
 <div class="container">
-    <div class="row justify-content-start mb-3">
+    <div class="row justify-content-start">
         <div class="col-lg-9">
-            <div class="card dashboard service-section d-flex justify-content-around">
+            <div class="card dashboard service-section d-flex justify-content-around mb-3">
                 <div class="card-body d-flex flex-column dashboard-card">
                     <h5 class="home">Jadwal Ibadah</h5>
                     <div class="row justify-content-start">
@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="col-lg-3">
-            <div class="card dashboard birthday-card">
+            <div class="card dashboard birthday-card mb-3">
                 <div class="card-body d-flex flex-column dashboard-card">
                     <h5 class="home">Ulang Tahun</h5>
                     @if ($member_birthday->count() > 0)
@@ -229,7 +229,7 @@
             <div class="card dashboard service-section mt-2 d-flex justify-content-around">
                 <div class="card-body d-flex flex-column dashboard-card">
                     <h5 class="home">Kritik dan Saran</h5>
-                    <form action="{{ route('criticism.store') }}" method="post">
+                      <form action="{{ route('criticism.store') }}" method="post">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label">Nama</label>
@@ -239,8 +239,10 @@
                             <label class="form-label">Kritik atau Saran</label>
                             <textarea class="form-control" name="body" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-login">Submit</button>
-                    </form>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-login">Submit</button>
+                        </div>
+                      </form>
                 </div>
             </div>
         </div>
@@ -258,7 +260,9 @@
                             <label class="form-label">Isi Doa</label>
                             <textarea class="form-control" name="body" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-login">Submit</button>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-login">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>
