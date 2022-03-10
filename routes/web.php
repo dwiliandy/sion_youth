@@ -31,6 +31,11 @@ use App\Http\Controllers\DashboardController;
   Route::get('/', function () {
     return view('welcome');
   });
+
+  Route::get('/organization', function () {
+    return view('organization');
+  })->name('organization');
+
   require __DIR__.'/auth.php';
 
   Route::get('/', [DashboardController::class, 'welcome'])->name('root');

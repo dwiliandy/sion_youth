@@ -27,6 +27,7 @@
                     <tr>
                       <td>{{ $news->title }}</td>
                       <td>
+                        <a href="{{ route('admin.news.show', ['news' => $news->id]) }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
                         <a href="{{ route('admin.news.edit', ['news' => $news->id]) }}" class="badge bg-warning"><i class="fas fa-edit"></i></a>
                         <form action="{{ route('admin.news.destroy', ['news' => $news->id]) }}" method="post" class="d-inline">
                           @csrf
