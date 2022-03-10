@@ -8,6 +8,7 @@ use App\Http\Controllers\Admins\ScheduleController  as AdminsScheduleController;
 use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataController;
 use App\Http\Controllers\Admins\CriticismController  as AdminsCriticismController;
 use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
+use App\Http\Controllers\Admins\SliderController  as AdminsSliderController;
 use App\Http\Controllers\CriticismController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
@@ -91,6 +92,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
 
   #News
   Route::resource('/news', 'Admins\NewsController', ['names' => 'admin.news']);
+  
+  #Slider
+  Route::resource('/sliders', 'Admins\SliderController', ['names' => 'admin.sliders']);
 
 });
 

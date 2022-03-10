@@ -65,6 +65,13 @@
     </a>
   </li>
 
+  <li class="nav-item {{ (Request::routeIs('admin.sliders.*')) ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.sliders.index') }}">
+      <i class="fas fa-images"></i>
+      <span>Slider</span>
+    </a>
+  </li>
+
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
       <button class="rounded-circle border-0" id="sidebarToggle"></button>

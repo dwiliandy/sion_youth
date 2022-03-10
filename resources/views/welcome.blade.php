@@ -18,12 +18,18 @@
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="{{ asset('css/gallery/jquery.scrollbar.css') }}"> --}}
   <style>
+    @media all and (min-width:768px){
+      .carousel-inner>.carousel-item>img {
+          height:  calc(100vh - 48px);
+      }
+    }
+    @media all and (max-width:768px){
+      .carousel-inner>.carousel-item>img {
+        max-height: 600px;
+      }
+    }
       .card.dashboard {
           border-radius: 20px;
-      }
-
-      .carousel-inner>.carousel-item>img {
-          max-height: 550px;
       }
 
       .slider {
@@ -49,7 +55,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active  img-fluid">
-                        <img src="{{ asset('spiderman.jpeg') }}" class="d-block w-100" alt="...">
+                        <img src="{{ asset('spiderman.jpeg') }}" class="d-block w-100 " alt="...">
                     </div>
                     <div class="carousel-item  img-fluid">
                         <img src="{{ asset('spiderman.jpg') }}" class="d-block w-100" alt="...">
