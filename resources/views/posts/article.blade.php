@@ -14,7 +14,11 @@
                 @foreach ($articles as $article)
                 <div class="col-lg-4  pt-2">
                   <div class="card">
-                    <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
+                    @if ($article->image)
+                      <img src="{{ asset('storage/'. $article->image) }}" class="card-img-top" alt="">
+                    @else
+                      <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
+                    @endif
                     <div class="card-body">
                       <h5 class="card-title">{{ $article->title }}</h5>
                       <small>{{ date('d-m-y', strtotime($article->created_at)) }}</small>

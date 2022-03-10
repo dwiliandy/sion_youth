@@ -30,7 +30,7 @@
                       <td>{{ ucwords($sector->name) }}</td>
                       <td>
                         <a href="{{ route('get-schedule', ['sector' => $sector->id]) }}" class="badge bg-info"><i class="fas fa-calendar"></i></a>
-                        <button type="button" class="badge bg-warning border-0 btn-edit"data-id="{{ $sector->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
+                        <button type="button" class="badge bg-warning border-0 btn-edit" data-id="{{ $sector->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
                           <i class="fas fa-edit"></i>
                         </button>
                         <form action="{{ route('admin.sectors.destroy', ['sector' => $sector->id]) }}" method="post" class="d-inline">

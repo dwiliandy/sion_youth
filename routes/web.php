@@ -95,6 +95,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   
   #Slider
   Route::resource('/sliders', 'Admins\SliderController', ['names' => 'admin.sliders']);
+  Route::post('/sliders/update-data', [AdminsSliderController::class,'updateData'])->name('admin.sliders.update-data');
 
 });
 

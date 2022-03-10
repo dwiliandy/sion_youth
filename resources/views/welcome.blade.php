@@ -44,25 +44,20 @@
 <div class="slider">
     <div class="row mb-3">
         <div class="col-lg-12">
+          @if ($sliders->count())
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                  @foreach ($sliders as $slider)
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}"
+                      class="{{ $loop->first ? 'active' : '' }}" aria-current="true" aria-label="Slide {{ $loop->index + 1 }}"></button>
+                  @endforeach
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active  img-fluid">
-                        <img src="{{ asset('spiderman.jpeg') }}" class="d-block w-100 " alt="...">
+                  @foreach ($sliders as $slider)
+                    <div class="carousel-item @if ($loop->first) active @endif  img-fluid">
+                      <img src="{{asset('storage/' . $slider->image)}}" class="d-block w-100 " alt="...">
                     </div>
-                    <div class="carousel-item  img-fluid">
-                        <img src="{{ asset('spiderman.jpg') }}" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item  img-fluid">
-                        <img src="{{ asset('spiderman.jpg') }}" class="d-block w-100" alt="...">
-                    </div>
+                  @endforeach
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="prev">
@@ -75,6 +70,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+          @endif
         </div>
     </div>
 </div>

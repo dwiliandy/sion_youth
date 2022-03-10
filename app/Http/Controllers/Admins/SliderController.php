@@ -11,43 +11,42 @@ class SliderController extends Controller
 {
     public function index(){
       $sliders = Slider::all();
-      return view('admin.slider.index', compact('sliders'));
+      $slider_order = Slider::pluck('order')->toArray();
+      $differenceArray = array_diff([1,2,3,4,5,6], $slider_order);
+      return view('admin.slider.index', compact('sliders','differenceArray'));
     }
 
     public function create(){
-      // $differenceArray = array_diff($b, $a);
     }
 
     public function store(Request $request){
+      
       $validatedData = $request->validate([
-        'image' => 'required|image'
+        'image' => 'image',
+        'order' => 'required'
       ],
       [
-        'image.required' => 'Gambar harus diisi',
+        'order.required' => 'Urutan harus diisi',
         'image.image' => 'File harus berbentuk gambar'
       ]);
-
-      $validatedData['image'] = $request->file('image')->store('post');
-      Slider::create($validatedData);
+      $validatedData['image'] = $request->file('image')->store('slider');
+      
+      $slider = Slider::create($validatedData);
       return redirect()->route('admin.sliders.index')->with(['success' => 'Data berhasil ditambahkan']);
     }
 
     public function edit(Slider $slider){
-
+      return response()->json($slider);
     }
 
-    public function update(Request $request, Slider $slider){
-      $validatedData = $request->validate([
-        'image' => 'required|image'
-      ],
-      [
-        'image.required' => 'Gambar harus diisi',
-        'image.image' => 'File harus berbentuk gambar'
-      ]);
+    public function updateData(Request $request){
+      $slider = Slider::find($request->id);
+      $order_slider = Slider::where('order', $request->order);
 
-      Storage::delete($slider->image);
-      $validatedData['image'] = $request->file('image')->store('post');
-      Slider::where('id', $slider->id)->update($validatedData);
+      if ($order_slider){
+        $order_slider->update(['order' => $slider->order]);
+      }
+      Slider::where('id', $slider->id)->update(['order' => $request->order]);
       return redirect()->route('admin.sliders.index')->with(['success' => 'Data berhasil diubah']);
     }
 

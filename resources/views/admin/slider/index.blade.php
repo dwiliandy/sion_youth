@@ -8,27 +8,36 @@
   <!-- DataTables Example -->
   <div class="card shadow mb-4">
       <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Berita</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Slider</h6>
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#modal-create">
-          <i class="fas fa-plus"></i>
-        </button>
+        @if ($sliders->count() < 6)
+          <button type="button" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#modal-create">
+            <i class="fas fa-plus"></i>
+          </button>
+        @endif
           <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                       <tr>
                           <th>Gambar</th>
+                          <th>Urutan</th>
                           <th>Action</th>
                       </tr>
                   </thead>
                   <tbody>
                     @foreach ($sliders as $slider)
                     <tr>
+                      
                       <td><img src="{{ asset('storage/'. $slider->image) }}" class="img-fluid col-sm-5 mb-3 d-block"></td>
                       <td>
-                        <a href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}" class="badge bg-warning"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('admin.slider.destroy', ['slider' => $slider->id]) }}" method="post" class="d-inline">
+                        {{ $slider->order }}</td>
+                      <td>
+                        <button type="button" class="badge bg-warning border-0 btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="{{ $slider->id }}">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        {{-- <a href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}" class="badge bg-warning"><i class="fas fa-edit"></i></a> --}}
+                        <form action="{{ route('admin.sliders.destroy', ['slider' => $slider->id]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
@@ -48,37 +57,61 @@
                       <h3 class="font-weight-bolder text-info text-gradient">Tambah Slide</h3>
                     </div>
                     <div class="card-body">
-                      <form action="#" method="post">
+                      <form action="{{ route('admin.sliders.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                          <div class="col-md-9">
+                            <label>Gambar</label>
+                            <div class="input-group mb-3">
+                              <input class="form-control" type="file" id="image" name="image" required>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label>Urutan</label>
+                              <div class="input-group mb-3">
+                                <select class="form-control" name="order" required>
+                                    <option value="" disabled selected>--Pilih--</option>
+                                    @foreach ($differenceArray as $data)
+                                      <option value="{{ $data }}">{{ $data }}</option>
+                                    @endforeach
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- Modal Edit --}}
+          <div class="modal fade" id="modal-update" tabindex="-1" role="dialog" aria-labelledby="modal-update" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal- " role="document">
+              <div class="modal-content">
+                <div class="modal-body p-0">
+                  <div class="card card-plain">
+                    <div class="card-header pb-0 text-left">
+                      <h3 class="font-weight-bolder text-info text-gradient">Edit Urutan</h3>
+                    </div>
+                    <div class="card-body">
+                      <form action="{{ route('admin.sliders.update-data') }}" method="post">
                         @csrf
                         <div class="row">
                           <div class="col-md-12">
-                            <label>Gambar</label>
-                            <div class="input-group mb-3">
-                              <input class="form-control" type="file" id="image" name="image">
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <label>Aktif</label>
-                            <div class="input-group mb-3">
-                              <select class="form-control" name="action" id="active" required  onchange="chooseType()">
-                                <option value="" disabled selected>--Pilih--</option>  
-                                  <option value="true">Aktif</option>
-                                  <option value="false">Tidak Aktif</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group" id="order" style="display:none">
+                            <div class="form-group">
+                              <input type="hidden" class="form-control" required name="id" id="id">
                               <label>Urutan</label>
                               <div class="input-group mb-3">
-                                <select class="form-control" name="order" >
-                                    <option value="" disabled selected>--Pilih--</option>  
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
+                                <select class="form-control" name="order" id="order" required>
+                                 @foreach (range(1,6) as $order)
+                                    <option value="{{ $order }}">{{ $order }}</option>
+                                @endforeach
                                 </select>
                               </div>
                             </div>
@@ -100,14 +133,18 @@
 
   @push('js')
   <script>
-    function chooseType() {
-      var action = document.getElementById('active').value;
-      if(action=="true"){
-        document.getElementById('order').style.display = 'block';
-      }else{
-        document.getElementById('order').style.display = 'none';
-      }
-    }
+    $('body').on("click", ".btn-edit", function () {
+      var id = $(this).attr("data-id");
+      $.ajax({
+        url: "/admin/sliders/"+ id + "/edit",
+        method: "GET",
+        success: function (response) {
+          $("#modal-edit").modal("show");
+          $("#order").val(response.order);
+          $("#id").val(response.id);
+        }
+      });
+    });
   </script>
   @endpush
 @endsection
