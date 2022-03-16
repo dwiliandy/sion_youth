@@ -19,8 +19,8 @@
                   <thead>
                       <tr>
                           <th>Nama</th>
-                          <th>Jenis Kelamin</th>
                           <th>Nama Keluarga</th>
+                          <th>Jenis Kelamin</th>
                           <th>Tempat Lahir</th>
                           <th>Tanggal Lahir</th>
                           <th>Kolom</th>

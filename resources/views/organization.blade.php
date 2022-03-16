@@ -1,5 +1,5 @@
 @extends('layouts.app',[
-'title' =>'Struktur Organisasio'
+'title' =>'Struktur Organisasi'
 ])
 
 

@@ -2,6 +2,11 @@
     'title' =>'Edit Jadwal'
 ])
 
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/timepicker.min.css') }}">
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+@endpush
+
 @section('content')
 <div class="container-fluid">
   <div class="row">
@@ -13,20 +18,35 @@
             <form action="{{ route('admin.schedules.update', ['schedule' => $schedule->id]) }}" method="post">
               @csrf
               @method('patch')
-                <div class="mb-3">
+              <div class="row">
+                <div class="mb-3 col-md-4">
                     <label class="form-label">Tanggal</label>
                     @error('date')
                       <p class="text-danger">{{ $message }}</p>
                     @enderror
                     <input type="date" class="form-control @error('date') is-invalid @enderror"  name="date" id="date" autofocus value="{{ old('date', $schedule->date) }}">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 col-md-4">
                     <label class="form-label">Waktu Ibadah</label>
                     @error('time')
                       <p class="text-danger">{{ $message }}</p>
                     @enderror
-                    <input type="time" class="form-control @error('time') is-invalid @enderror" name="time" id="time" value="{{ old('time', $schedule->time) }}">
+                    <input type="text" class="form-control bs-timepicker @error('time') is-invalid @enderror" name="time" id="time" value="{{ old('time', $schedule->time) }}">
                 </div>
+                <div class="mb-3 col-md-4">
+                    <label class="form-label">Kolom</label>
+                    <select class="form-control" name="group" required id="group">
+                      <option value="-" selected>Pilih</option>
+                      @foreach ($groups as $group)
+                        @if (old('group', $schedule->group) == $group->name)
+                          <option value="{{ $group->name }}" selected>{{ ucwords($group->name) }}</option>
+                        @else
+                          <option value="{{ $group->name }}">{{ ucwords($group->name) }}</option>
+                        @endif
+                      @endforeach
+                  </select>
+                </div>
+              </div>
                 <div class="mb-3">
                     <label class="form-label">Tempat Ibadah</label>
                     @error('family_name')
@@ -40,18 +60,6 @@
                       <p class="text-danger">{{ $message }}</p>
                     @enderror
                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name', $schedule->name) }}">
-                </div>
-                <label class="form-label">Kolom</label>
-                <div class="input-group mb-3">
-                    <select class="form-control" name="group" required id="group">
-                        @foreach ($groups as $group)
-                          @if (old('group', $schedule->group) == $group->name)
-                            <option value="{{ $group->name }}" selected>{{ ucwords($group->name) }}</option>
-                          @else
-                            <option value="{{ $group->name }}">{{ ucwords($group->name) }}</option>
-                          @endif
-                        @endforeach
-                    </select>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Khadim</label>
@@ -74,8 +82,12 @@
     </div>
   </div>
 </div>
-
+<script>
+  $(function () {
+    $('.bs-timepicker').timepicker();
+  });
+</script>
   @push('js')
-
+  <script src="{{ asset('js/timepicker.min.js') }}"></script>
   @endpush
 @endsection

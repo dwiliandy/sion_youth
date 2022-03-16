@@ -86,14 +86,39 @@
                           <div class="col-lg-6 pt-2">
                               <div class="card">
                                   <div class="card-body">
+                                    <div class="text-center">
                                       <h5 class="card-title">{{ $schedule->sector->name }}</h5>
-                                      <small>{{ Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM Y') }}</small>
-                                      <small> {{ Carbon\Carbon::parse($schedule->time)->isoFormat('HH:mm') }}</small>
-                                      <hr>
-                                      <p class="card-text">Tempat Ibadah : {{ $schedule->family_name }} ({{ $schedule->name }})</p>
-                                      <p class="card-text">Kolom : {{ $schedule->group }}</p>
-                                      <p class="card-text">Khadim : {{ $schedule->preacher }}</p>
+                                    </div>
+                                    <table class="table table-borderless">
+                                      <tbody>
+                                        <tr>
+                                          <td width="1px" class="mt-3"><i class="far fa-calendar-alt"></i></td>
+                                          <td class="mt-3">: {{ Carbon\Carbon::parse($schedule->date)->isoFormat('dddd, D MMMM Y') }}</td>
+                                        </tr>
+                                        <tr>
+                                          <td><i class="fas fa-clock"></i></td>
+                                          <td>: {{ Carbon\Carbon::parse($schedule->time)->isoFormat('HH:mm') }}</td>
+                                        </tr>
+                                        <tr>
+                                          <td><i class="fas fa-home"></i></td>
+                                          <td>: {{ $schedule->family_name }} 
+                                            @if ( $schedule->group != '-')
+                                              (Kolom {{ $schedule->group }})
+                                            @endif
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td><i class="fas fa-user"></i></td>
+                                          <td>: {{ $schedule->name }}</td>
+                                        </tr>
+                                        <tr>
+                                          <td><i class="fas fa-bullhorn"></i></td>
+                                          <td>: {{ $schedule->preacher }}</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
                                       @if ($schedule->description)
+                                        <hr>
                                         <strong>{!! nl2br($schedule->description) !!}</strong>
                                       @endif
                                   </div>
