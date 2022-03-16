@@ -16,8 +16,9 @@ class ScheduleController extends Controller
   }
 
   public function store(Request $request){
+    $todayDate = date('Y/m/d');
     $validatedData = $request->validate([
-      'date' => 'required',
+      'date' => 'required|after_or_equal:'.$todayDate,
       'time' => 'required',
       'family_name' => 'required|max:255',
       'name' => 'required|max:255',
@@ -26,6 +27,7 @@ class ScheduleController extends Controller
     ],
     [
         'date.required' => 'Tanggal harus diisi',
+        'date.after_or_equal' => 'Tanggal tidak boleh kurang dari hari ini',
         'time.required' => 'Jam ibadah harus diisi',
         'family_name.required' => 'Nama Keluarga harus diisi',
         'family_name.max' => 'Nama Keluarga maksimal 255 karakter',
@@ -48,9 +50,9 @@ class ScheduleController extends Controller
   }
 
   public function update(Request $request, Schedule $schedule){
-    
+    $todayDate = date('Y/m/d');
     $validatedData = $request->validate([
-      'date' => 'required',
+      'date' => 'required|after_or_equal:'.$todayDate,
       'time' => 'required',
       'family_name' => 'required|max:255',
       'name' => 'required|max:255',
@@ -59,6 +61,7 @@ class ScheduleController extends Controller
     ],
     [
         'date.required' => 'Tanggal harus diisi',
+        'date.after_or_equal' => 'Tanggal tidak boleh kurang dari hari ini',
         'time.required' => 'Jam ibadah harus diisi',
         'family_name.required' => 'Nama Keluarga harus diisi',
         'family_name.max' => 'Nama Keluarga maksimal 255 karakter',
@@ -67,6 +70,7 @@ class ScheduleController extends Controller
         'group.required' => 'Kolom harus diisi',
         'preacher.required' => 'Khadim harus diisi',
     ]);
+    
     
     $validatedData['description'] = $request->description;
     Schedule::where('id', $schedule->id)->update($validatedData);
