@@ -26,8 +26,4 @@ class GroupController extends Controller
       }
       return redirect()->route('groups.index')->with(['success' => 'Data berhasil diperbarui']);
     }
-
-    public function removeGroup($request){
-
-    }
 }
