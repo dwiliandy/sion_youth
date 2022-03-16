@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('root') }}">
       <div class="sidebar-brand-icon">
         <i class="fas fa-church"></i>
       </div>
-      <div class="sidebar-brand-text mx-3">SionerZ</div>
+      <div class="sidebar-brand-text mx-3">Sion Youth</div>
   </a>
 
   <!-- Divider -->

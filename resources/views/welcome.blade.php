@@ -145,6 +145,8 @@
                                   <td>
                                       <p>{{ ucwords($birthday->name) }}
                                           <br>{{ Carbon\Carbon::parse($birthday->birth_date)->isoFormat('D MMMM') }}</p>
+                                          {{-- get umur
+                                          <p>{{ Carbon\Carbon::parse('20-04-2000')->age }}</p> --}}
                                   </td>
                               </tr>
                             @endforeach
