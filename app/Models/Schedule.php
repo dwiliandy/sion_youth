@@ -16,6 +16,7 @@ class Schedule extends Model
       'time',
       'sector_id',
       'group',
+      'description'
     ];
     
     public function sector()

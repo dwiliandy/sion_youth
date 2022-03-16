@@ -19,8 +19,8 @@ class DashboardController extends Controller
       $start = date('z', strtotime(Carbon::now())) + 1;
       // end range 7 days from now
       $end = date('z', strtotime(Carbon::now())) + 1 + 7;
-      // $member_birthday = MemberData::where('is_active',true)->whereRaw("DAYOFYEAR(birth_date) BETWEEN $start AND $end")->get();
-      $member_birthday = MemberData::where('is_active',true)->whereMonth('birth_date', '=', Carbon::now()->format('m'))->whereDay('birth_date', '=', Carbon::now()->format('d'))->get();
+      $member_birthday = MemberData::where('is_active',true)->whereRaw("DAYOFYEAR(birth_date) BETWEEN $start AND $end")->orderByRaw('MONTH(birth_date)')->orderByRaw('DAY(birth_date)')->get();
+      // $member_birthday = MemberData::where('is_active',true)->whereMonth('birth_date', '=', Carbon::now()->format('m'))->whereDay('birth_date', '=', Carbon::now()->format('d'))->get();
       $articles = Category::where('name','artikel')->first()->posts->where('published',true)->take(6);
       $khotbahs = Category::where('name','khotbah')->first()->posts->where('published',true)->take(6);
       $schedules = Schedule::whereBetween('date', [$startDate, $endDate])->with('sector')->get();

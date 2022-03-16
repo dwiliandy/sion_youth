@@ -93,6 +93,9 @@
                                       <p class="card-text">Tempat Ibadah : {{ $schedule->family_name }} ({{ $schedule->name }})</p>
                                       <p class="card-text">Kolom : {{ $schedule->group }}</p>
                                       <p class="card-text">Khadim : {{ $schedule->preacher }}</p>
+                                      @if ($schedule->description)
+                                        <strong>{!! nl2br($schedule->description) !!}</strong>
+                                      @endif
                                   </div>
                               </div>
                           </div>

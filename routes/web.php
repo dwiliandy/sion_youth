@@ -1,19 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admins\GroupController;
-use App\Http\Controllers\Admins\PostController  as AdminsPostController;
-use App\Http\Controllers\Admins\SectorController  as AdminsSectorController;
-use App\Http\Controllers\Admins\ScheduleController  as AdminsScheduleController;
-use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataController;
-use App\Http\Controllers\Admins\CriticismController  as AdminsCriticismController;
-use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
-use App\Http\Controllers\Admins\SliderController  as AdminsSliderController;
-use App\Http\Controllers\CriticismController;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PrayerController;
+use App\Http\Controllers\CriticismController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admins\GroupController;
+use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
+use App\Http\Controllers\Admins\PostController  as AdminsPostController;
+use App\Http\Controllers\Admins\SectorController  as AdminsSectorController;
+use App\Http\Controllers\Admins\SliderController  as AdminsSliderController;
+use App\Http\Controllers\Admins\ScheduleController  as AdminsScheduleController;
+use App\Http\Controllers\Admins\CriticismController  as AdminsCriticismController;
+use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataController;
 
 
 
@@ -28,6 +29,7 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+
 #Guest Route
   Route::get('/', function () {
     return view('welcome');
@@ -36,6 +38,10 @@ use App\Http\Controllers\DashboardController;
   Route::get('/organization', function () {
     return view('organization');
   })->name('organization');
+
+  Route::get('/store-data', function () {
+    \Artisan::call('storage:link');
+  })->name('storage');
 
   require __DIR__.'/auth.php';
 

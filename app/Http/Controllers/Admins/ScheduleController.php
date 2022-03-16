@@ -36,6 +36,7 @@ class ScheduleController extends Controller
     ]);
 
     $validatedData['sector_id'] = $request->sector_id;
+    $validatedData['description'] = $request->description;
 
     $schedule = Schedule::create($validatedData);
     return redirect()->route('get-schedule', ['sector' => $schedule->sector->id])->with(['success' => 'Data berhasil diubah']);
@@ -66,7 +67,8 @@ class ScheduleController extends Controller
         'group.required' => 'Kolom harus diisi',
         'preacher.required' => 'Khadim harus diisi',
     ]);
-
+    
+    $validatedData['description'] = $request->description;
     Schedule::where('id', $schedule->id)->update($validatedData);
     return redirect()->route('get-schedule', ['sector' => $schedule->sector->id])->with(['success' => 'Data berhasil diubah']);
   }

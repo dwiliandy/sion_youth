@@ -60,6 +60,10 @@
                   @enderror
                   <input type="text" class="form-control @error('preacher') is-invalid @enderror" name="preacher" id="preacher" value="{{ old('preacher') }}">
               </div>
+              <div class="mb-3">
+                <label class="form-label">Keterangan</label>
+                <textarea class="form-control" name="description" id="description" rows="3">{{{ old('description') }}}</textarea>
+              </div>
                 <div class="text-center col-md-12">
                   <button type="submit" class="btn btn-lg btn-primary">Buat Data</button>
                 </div>
