@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Response;
 
 class GroupController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('can:super admin');
+  }
   public function index(){;
     $groups = Group::all();
     return view('admin.group.index', compact(['groups']));
