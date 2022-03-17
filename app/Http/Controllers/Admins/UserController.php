@@ -86,5 +86,10 @@ class UserController extends Controller
       return redirect()->route('admin.users.index')->with(['success' => 'Data berhasil diubah']);
     }
 
+    public function destroy(User $user){
+      User::destroy($user->id);
+    return redirect()->route('admin.users.index')->with(['success' => 'Data berhasil dihapus']);
+  }
+
 
 }
