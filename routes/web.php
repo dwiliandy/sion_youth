@@ -9,6 +9,7 @@ use App\Http\Controllers\CriticismController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admins\GroupController;
 use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
+use App\Http\Controllers\Admins\DashboardController  as AdminsDashboardController;
 use App\Http\Controllers\Admins\PostController  as AdminsPostController;
 use App\Http\Controllers\Admins\SectorController  as AdminsSectorController;
 use App\Http\Controllers\Admins\SliderController  as AdminsSliderController;
@@ -67,6 +68,8 @@ use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataControl
 #Admin Route
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   
+  Route::get('/changePassword',[AdminsDashboardController::class,'changePassword'])->name('change-password');
+  Route::get('/changePassword/update/{id}',[AdminsDashboardController::class,'updatePassword'])->name('updatePassword');
   Route::get('/dashboard', function () {
     return view('admin.dashboard');
   })->name('dashboard');
