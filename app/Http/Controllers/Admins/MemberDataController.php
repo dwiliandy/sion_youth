@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class MemberDataController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('can:super admin');
+  }
+  
     public function index(){
       $member_datas = MemberData::all();
       return view('admin.member_data.index', compact(['member_datas']));

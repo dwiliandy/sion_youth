@@ -30,6 +30,15 @@ use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataControl
 |
 */
 
+// For Hostinger, run the route for symbolic link
+Route::get('/store-data', function () {
+  \Artisan::call('storage:link');
+})->name('storage');
+
+// For Hostinger, run the route for migrate data
+Route::get('/migration', function () {
+  \Artisan::call('migrate');
+})->name('migrate');
 
 #Guest Route
   Route::get('/', function () {
@@ -40,9 +49,6 @@ use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataControl
     return view('organization');
   })->name('organization');
 
-  Route::get('/store-data', function () {
-    \Artisan::call('storage:link');
-  })->name('storage');
 
   require __DIR__.'/auth.php';
 
@@ -78,6 +84,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   Route::resource('/groups', 'Admins\GroupController');
   Route::post('/group/edit', [GroupController::class,'editGroup'])->name('edit-group');
   
+  #User
+  Route::resource('/users', 'Admins\UserController', ['names' => 'admin.users']);
+
   #Post
   Route::resource('/posts', 'Admins\PostController', ['names' => 'admin.posts']);
   Route::post('/posts/publish_data/{post}', [AdminsPostController::class,'publishData'])->name('publish-data');
@@ -86,7 +95,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   #Sector
   Route::resource('/sectors', 'Admins\SectorController', ['names' => 'admin.sectors']);
   Route::get('/sectors/{sector}/schedule', [AdminsSectorController::class,'getSchedule'])->name('get-schedule');
-  Route::post('/sectors/update-data', [AdminsSectorController::class,'updateData'])->name('update-data');
+  Route::post('/sectors/update-data', [AdminsSectorController::class,'updateDataSector'])->name('admin.sector.update-data');
   
   #Schedule
   Route::resource('/schedules', 'Admins\ScheduleController', ['names' => 'admin.schedules']);

@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('can:super admin');
+  }
     public function index(){
       $posts = Post::orderBy('created_at','desc')->with('category')->get();
       return view('admin.post.index', compact(['posts']));

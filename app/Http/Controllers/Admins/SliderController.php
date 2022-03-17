@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('can:super admin');
+  }
     public function index(){
       $sliders = Slider::all();
       $slider_order = Slider::pluck('order')->toArray();

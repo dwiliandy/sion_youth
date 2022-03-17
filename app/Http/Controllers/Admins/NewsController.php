@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('can:super admin');
+  }
      public function index(){
       $newses = News::all();
       return view('admin.news.index', compact(['newses']));

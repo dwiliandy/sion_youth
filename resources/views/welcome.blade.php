@@ -233,7 +233,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
       <div class="col-lg-12 mb-2">
         <div class="card dashboard service-section d-flex justify-content-around">
             <div class="card-body d-flex flex-column dashboard-card">
@@ -263,7 +263,7 @@
             </div>
         </div>
       </div>
-    </div>
+    </div> --}}
     <div class="row mb-2">
         <div class="col-lg-6">
             <div class="card dashboard service-section mt-2 d-flex justify-content-around">

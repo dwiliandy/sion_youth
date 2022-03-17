@@ -7,9 +7,11 @@
 
   <!-- DataTables Example -->
   <div class="card shadow mb-4">
+    @can('super admin')
       <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Data Kelompok</h6>
       </div>
+    @endcan
       <div class="row ml-4 mt-3">
         <button type="button" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#modal-create">
           <i class="fas fa-plus"></i>
@@ -29,15 +31,19 @@
                     <tr>
                       <td>{{ ucwords($sector->name) }}</td>
                       <td>
-                        <a href="{{ route('get-schedule', ['sector' => $sector->id]) }}" class="badge bg-info"><i class="fas fa-calendar"></i></a>
-                        <button type="button" class="badge bg-warning border-0 btn-edit" data-id="{{ $sector->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
-                          <i class="fas fa-edit"></i>
-                        </button>
-                        <form action="{{ route('admin.sectors.destroy', ['sector' => $sector->id]) }}" method="post" class="d-inline">
-                          @csrf
-                          @method('delete')
-                          <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
-                        </form>
+                        @if(Gate::check($sector->name) || Gate::check('super admin'))
+                          <a href="{{ route('get-schedule', ['sector' => $sector->id]) }}" class="badge bg-info"><i class="fas fa-calendar"></i></a>
+                        @endif
+                        @can('super admin')
+                          <button type="button" class="badge bg-warning border-0 btn-edit" data-id="{{ $sector->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
+                            <i class="fas fa-edit"></i>
+                          </button>
+                          <form action="{{ route('admin.sectors.destroy', ['sector' => $sector->id]) }}" method="post" class="d-inline">
+                            @csrf
+                            @method('delete')
+                            <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
+                          </form>
+                        @endcan
                       </td>
                     </tr>
                   @endforeach
@@ -87,14 +93,14 @@
                       <h3 class="font-weight-bolder text-info text-gradient">Edit Kelompok</h3>
                     </div>
                     <div class="card-body">
-                      <form action="{{ route('update-data') }}" method="post">
+                      <form action="{{ route('admin.sector.update-data') }}" method="post">
                         @csrf
                         @method('patch')
                         <div class="row">
                           <div class="form-group">
                             <label>Nama Kelompok</label>
                             <div class="input-group mb-3">
-                              <input type="hidden" class="form-control" required name="name" id="id">
+                              <input type="hidden" class="form-control" required name="id" id="id">
                               <input type="text" class="form-control" required name="name" id="name">
                             </div>
                           </div>
