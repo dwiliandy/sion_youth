@@ -34,16 +34,9 @@
                 <li class="nav-item">
                   <a class="nav-link {{ Request::routeIs('organization') ? 'active' : '' }}" href="{{ route('organization') }}">Struktur Organisasi</a>
                 </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                      data-bs-toggle="dropdown" aria-expanded="false">
-                      Berita dan Kegiatan
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="{{ route('news.index') }}">Berita</a></li>
-                      <li><a class="dropdown-item" href="#">Kegiatan</a></li>
-                  </ul>
-              </li>
+                <li class="nav-item">
+                  <a class="nav-link {{ Request::routeIs('organization') ? 'active' : '' }}" href="{{ route('news.index') }}">Berita dan Kegiatan</a>
+                </li>
               <li class="nav-item">
                 <a class="nav-link {{ Request::routeIs('prayers.index') ? 'active' : '' }}" aria-current="page" href="{{ route('prayers.index') }}">Doa</a>
             </li>

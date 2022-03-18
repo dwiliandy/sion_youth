@@ -26,3 +26,42 @@
 a.dropdown-item:hover {
   background-color: #6e3abd;
 }
+
+.breadcrumb {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 8px 15px 0 35px;
+}
+
+.breadcrumb>li {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.breadcrumb>li+li:before {
+  content: "\3E";
+  color: #b1afaf;
+  font-weight: bold;
+}
+
+.breadcrumb>li>a{
+  color:#7952b3;
+}
+
+.breadcrumb>li>a, .breadcrumb>li{
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.img-hover-zoom {
+  overflow: hidden; 
+  
+}
+.img-hover-zoom img {
+  transition: transform 1s ease-in-out;
+  transform-origin: center center;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.2);
+}

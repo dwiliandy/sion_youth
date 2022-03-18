@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index(){
-      $newses = News::all();
+      $newses = News::latest()->get();
       return view('news.index', compact('newses'));
     }
 

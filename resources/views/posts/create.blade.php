@@ -8,7 +8,13 @@
         <div class="col-lg-12 mb-2">
             <div class="card dashboard service-section d-flex justify-content-around">
                 <div class="card-body d-flex flex-column dashboard-card">
-                    <h5 class="home">Tambah Post</h5>
+                    <nav aria-label="breadcrumb" class="mb-1" style="--bs-breadcrumb-divider: '>';">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('root') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Kontribusi</li>
+                      </ol>
+                    </nav>
+                    <h5 class="home text-center">TAMBAH POSTINGAN</h5>
                     <div class="row justify-content-center">
                         <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
