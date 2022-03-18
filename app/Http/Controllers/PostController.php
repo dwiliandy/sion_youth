@@ -9,10 +9,17 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {    
-    public function show($id){
-      $post = Post::find($id);
-      return view('posts.show', compact('post'));
-    }
+      public function show($id){
+        $post = Post::find($id);
+        $title = ucwords($post->title);
+        $post_excerpt = $post->excerpt;
+        if($post->image) {
+          $post_image = $post->image;
+        }else{
+          $post_image = "";
+        }
+        return view('posts.show', compact('post','title','post_excerpt','post_image'));
+      }
 
 
     public function create(){
