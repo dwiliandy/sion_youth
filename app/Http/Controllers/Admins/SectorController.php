@@ -49,7 +49,7 @@ class SectorController extends Controller
         $schedules =  Sector::find($sector)->schedules;
         return view('admin.schedule.index', compact(['sector_name','schedules','sector']));
       }else{
-        abort(401);
+        abort(403);
       }
     }
 }
