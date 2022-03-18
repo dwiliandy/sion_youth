@@ -11,6 +11,7 @@ class PostController extends Controller
 {    
       public function show($id){
         $post = Post::find($id);
+        $post_url = route('posts.show', ['post' => $post->id]);
         $title = ucwords($post->title);
         $post_excerpt = $post->excerpt;
         if($post->image) {
@@ -18,7 +19,7 @@ class PostController extends Controller
         }else{
           $post_image = "";
         }
-        return view('posts.show', compact('post','title','post_excerpt','post_image'));
+        return view('posts.show', compact('post_url','post','title','post_excerpt','post_image'));
       }
 
 

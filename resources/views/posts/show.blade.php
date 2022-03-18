@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @push('head')
-  <meta property="og:url"           content="https://www.sionyouth.online" />
+  <meta property="og:url"           content="{{ $post_url }}" />
   <meta property="og:type"          content="website" />
-  <meta property="og:title"         content={{ $title }}/>
-  <meta property="og:description"   content={{ $post_excerpt }} />
+  <meta property="og:title"         content="{{ $title }}" />
+  <meta property="og:description"   content="{{ $post_excerpt }}" />
   @if ($post_image != "")
     <meta property="og:image" content="{{ asset('storage/'. $post_image) }}" />
   @else
