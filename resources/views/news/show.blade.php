@@ -1,6 +1,16 @@
-@extends('layouts.app',[
-'title' =>'Detail Berita'
-])
+@extends('layouts.app')
+
+@push('head')
+  <meta property="og:url"           content="{{ $post_url }}" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="{{ $title }}" />
+  <meta property="og:description"   content="{{ $post_excerpt }}" />
+  @if ($post_image != "")
+    <meta property="og:image" content="{{ asset('storage/'. $post_image) }}" />
+  @else
+    <meta property="og:image" content="{{ asset('sion-2.jfif') }}" />
+  @endif
+@endpush
 
 @section('content')
 
@@ -21,9 +31,16 @@
                 @if ($news->image)
                     <img class="img-fluid" src="{{ asset('storage/'. $news->image) }}" alt="">
                 @endif
-                <p class="mt-3">{!! $news->body !!}</p>
-                <a href="{{ route('root') }}"><i class="fas fa-long-arrow-alt-left"> Kembali ke halaman awal</i></a>
-          </div>
+              <p class="mt-3">{!! $news->body !!}</p>
+              <div class="d-flex">
+                <div class="px-2">
+                  <p class="btn btn-primary" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('{{ route('news.show', ['news' => $news->id]) }}'),'facebook-share-dialog','width=626,height=436'); return false;" /><i class="fab fa-facebook"> Bagikan</i></p>
+                </div>
+                <div class="px-2">
+                  <a target="_blank" href="whatsapp://send?text={{ route('news.show', ['news' => $news->id]) }}" class="btn btn-success"><i class="fab fa-whatsapp"> Bagikan</i></a>
+                </div>
+              </div>
+                </div>
         </div>
       </div>
     </div>
