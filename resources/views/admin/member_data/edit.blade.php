@@ -124,7 +124,7 @@
                 </div>
               </div>
                 <div class="text-center col-md-12">
-                  <button type="submit" class="btn btn-lg btn-primary">Buat Data</button>
+                  <button type="submit" class="btn btn-lg btn-primary">Edit Data</button>
                 </div>
             </form>
           </div>

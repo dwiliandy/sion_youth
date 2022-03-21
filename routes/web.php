@@ -34,7 +34,7 @@ use App\Http\Controllers\Admins\MemberDataController  as AdminsMemberDataControl
 
 // For Hostinger, run the route for symbolic link
 Route::get('/store-data', function () {
-  \Artisan::call('storage:link');
+   Artisan::call('storage:link');
 })->name('storage');
 
 // For Hostinger, run the route for migrate data

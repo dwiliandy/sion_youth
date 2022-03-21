@@ -35,8 +35,7 @@ class MemberDataController extends Controller
         'sidi' => 'required',
         'group' => 'required',
         'family_name' => 'required',
-        'sex' => 'required',
-        'id_number' => 'required|unique:member_data|numeric|digits:16',
+        'sex' => 'required'
       ],
       [
           'name.required' => 'Nama harus diisi',
@@ -46,11 +45,7 @@ class MemberDataController extends Controller
           'baptize.required' => 'Status baptis harus diisi',
           'sidi.required' => 'Status sidi harus diisi',
           'group.required' => 'Kolom harus diisi',
-          'sex.required' => 'Jenis Kelamin harus diisi',
-          'id_number.required' => 'NIK harus diisi',
-          'id_number.unique' => 'NIK sudah ada',
-          'id_number.numeric' => 'NIK harus angka',
-          'id_number.digits' => 'NIK harus 16 angka',
+          'sex.required' => 'Jenis Kelamin harus diisi'
       ]);
   
       MemberData::create($validatedData);
@@ -84,18 +79,6 @@ class MemberDataController extends Controller
           'group.required' => 'Kolom harus diisi',
           'sex.required' => 'Jenis Kelamin harus diisi',
       ]);
-
-      if($request->id_number != $member_data->id_number){
-        $validatedData = $request->validate([
-          'id_number' => 'required|unique:member_data|numeric|digits:16',
-        ],
-        [
-          'id_number.required' => 'NIK harus diisi',
-          'id_number.unique' => 'NIK sudah ada',
-          'id_number.numeric' => 'NIK harus angka',
-          'id_number.digits' => 'NIK harus 16 angka',
-        ]);
-      }
   
       MemberData::where('id', $member_data->id)->update($validatedData);
       return redirect()->route('admin.member_datas.index')->with(['success' => 'Data berhasil diubah']);
