@@ -20,8 +20,9 @@
   <style>
     @media all and (min-width:768px){
       .carousel-inner>.carousel-item>img {
-          height:  calc(100vh - 48px);
+          height:  100vh;
       }
+
     }
     @media all and (max-width:768px){
       .carousel-inner>.carousel-item>img {
@@ -36,46 +37,50 @@
           width: 100%;
           max-height: 100vh;
       }
+      .body-content{
+        margin-top: -16px
+      }
 
   </style>
 @endpush
 
-@section('content')
 <div class="slider">
-    <div class="row mb-3">
-        <div class="col-lg-12">
-          @if ($sliders->count())
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  @foreach ($sliders as $slider)
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}"
-                      class="{{ $loop->first ? 'active' : '' }}" aria-current="true" aria-label="Slide {{ $loop->index + 1 }}"></button>
-                  @endforeach
-                </div>
-                <div class="carousel-inner">
-                  @foreach ($sliders as $slider)
-                    <div class="carousel-item @if ($loop->first) active @endif  img-fluid">
-                      <img src="{{asset('storage/' . $slider->image)}}" class="d-block w-100 " alt="...">
-                    </div>
-                  @endforeach
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-          @endif
-        </div>
-    </div>
-</div>
+  <div class="row mb-3">
+      <div class="col-lg-12">
+        @if ($sliders->count())
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                @foreach ($sliders as $slider)
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}"
+                    class="{{ $loop->first ? 'active' : '' }}" aria-current="true" aria-label="Slide {{ $loop->index + 1 }}"></button>
+                @endforeach
+              </div>
+              <div class="carousel-inner">
+                @foreach ($sliders as $slider)
+                  <div class="carousel-item @if ($loop->first) active @endif  img-fluid">
+                    <img src="{{asset('storage/' . $slider->image)}}" class="d-block w-100 " alt="...">
+                  </div>
+                @endforeach
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
+          </div>
+        @endif
+      </div>
+  </div>
+</div> 
+@section('content')
+
 <div class="container">
-    <div class="row justify-content-start">
+    <div class="row justify-content-start mt-3">
         <div class="col-lg-9">
             <div class="card dashboard service-section d-flex justify-content-around mb-3">
                 <div class="card-body d-flex flex-column dashboard-card">

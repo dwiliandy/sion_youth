@@ -5,8 +5,7 @@
     }
 
 </style>
-
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #7952b3">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #7952b3">
     <div class="container">
         <a class="navbar-brand" href="/">SionerZ</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

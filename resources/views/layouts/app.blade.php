@@ -34,8 +34,8 @@
 </head>
 
 <body>
-  <div class="min-vh-100 d-flex flex-column justify-content-between" style="background-color: #eee">
-      <div> 
+  <div class="body-content min-vh-100 d-flex flex-column justify-content-between" style="background-color: #eee">
+      <div>
         @include('components.flash-message-guest')
         @include('layouts.navigation')
         <main>  
