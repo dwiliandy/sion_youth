@@ -25,7 +25,7 @@ return new class extends Migration
             $table->enum('baptize', ['already','not_yet']);
             $table->enum('sidi', ['already','not_yet']);
             $table->enum('sex', ['male','female']);
-            $table->string('id_number');
+            $table->string('id_number')->nullable();
             
         });
     }

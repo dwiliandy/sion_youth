@@ -10,14 +10,18 @@
       <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Daftar Anggota</h6>
       </div>
-      <div class="row ml-4 mt-3">
-        <a href="{{ route('admin.member_datas.create') }}" class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
-      </div>
       <div class="card-body">
+        <div class="row">
+          <div class="d-flex">
+            <a href="{{ route('admin.member_datas.create') }}" class="my-3 btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
+            <a href="{{ route('import_member_data.index') }}" class="my-3 ml-auto btn btn-success"><i class="fas fa-file-import"> Import</i></a>
+          </div>
+        </div>
           <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                       <tr>
+                          <th>No</th>
                           <th>Nama</th>
                           <th>Nama Keluarga</th>
                           <th>Jenis Kelamin</th>
@@ -32,6 +36,7 @@
                   <tbody>
                     @foreach ($member_datas as $member_data)
                     <tr>
+                      <td>{{ $loop->index+1 }}</td>
                       <td>{{ $member_data->name }}</td>
                       <td>{{ $member_data->family_name }}</td>
                       <td>

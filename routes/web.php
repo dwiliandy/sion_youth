@@ -9,6 +9,8 @@ use App\Http\Controllers\CriticismController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admins\GroupController;
 use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
+use App\Http\Controllers\Admins\DownloadController  as AdminsDownloadController;
+use App\Http\Controllers\Admins\MemberDataImportController  as AdminsMemberDataImportController;
 use App\Http\Controllers\Admins\DashboardController  as AdminsDashboardController;
 use App\Http\Controllers\Admins\PostController  as AdminsPostController;
 use App\Http\Controllers\Admins\SectorController  as AdminsSectorController;
@@ -74,6 +76,13 @@ Route::get('/migration', function () {
 #Admin Route
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   
+  #Importing Route
+  Route::get('import_member_data', [AdminsMemberDataImportController::class, 'index'])->name('import_member_data.index');
+  Route::post('import_member_data', [AdminsMemberDataImportController::class, 'store'])->name('import_member_data');
+
+  #Download Template
+  Route::get('download-member-data', [AdminsDownloadController::class, 'downloadMemberData'])->name('download-member-data');
+
   Route::get('/changePassword',[AdminsDashboardController::class,'changePassword'])->name('change-password');
   Route::get('/changePassword/update/{id}',[AdminsDashboardController::class,'updatePassword'])->name('updatePassword');
   Route::get('/dashboard', function () {
