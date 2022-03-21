@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admins;
 
+use Carbon\Carbon;
 use App\Models\Sector;
 use App\Models\Sectpr;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class SectorController extends Controller
     public function getSchedule($sector){
       $sector_name = Sector::find($sector)->name;
       if(Gate::check($sector_name) || Gate::check('super admin')){
-        $schedules =  Sector::find($sector)->schedules;
+        $schedules =  Sector::find($sector)->schedules->where('date','>=',Carbon::now());
         return view('admin.schedule.index', compact(['sector_name','schedules','sector']));
       }else{
         abort(403);
