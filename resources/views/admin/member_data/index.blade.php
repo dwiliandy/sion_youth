@@ -14,7 +14,10 @@
         <div class="row">
           <div class="d-flex">
             <a href="{{ route('admin.member_datas.create') }}" class="my-3 btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
-            <a href="{{ route('import_member_data.index') }}" class="my-3 ml-auto btn btn-success"><i class="fas fa-file-import"> Import</i></a>
+            <div class="my-3 ml-auto ">
+              <a href="{{ route('import_member_data.index') }}" class="btn btn-success"><i class="fas fa-file-import"> Import Data</i></a>
+              <a href="{{ route('export_member_data.export') }}" class="btn btn-success"><i class="fas fa-file-export"> Export Data</i></a>
+            </div>
           </div>
         </div>
           <div class="table-responsive">

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admins\GroupController;
 use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
 use App\Http\Controllers\Admins\DownloadController  as AdminsDownloadController;
 use App\Http\Controllers\Admins\MemberDataImportController  as AdminsMemberDataImportController;
+use App\Http\Controllers\Admins\MemberDataExportController  as AdminsMemberDataExportController;
 use App\Http\Controllers\Admins\ScheduleImportController  as AdminsScheduleImportController;
 use App\Http\Controllers\Admins\DashboardController  as AdminsDashboardController;
 use App\Http\Controllers\Admins\PostController  as AdminsPostController;
@@ -83,6 +84,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   
   Route::get('/sectors/{sector}/schedule/import_schedule', [AdminsScheduleImportController::class, 'index'])->name('import_schedule.index');
   Route::post('import_schedule', [AdminsScheduleImportController::class, 'store'])->name('import_schedule');
+
+  #Exporting Route
+  Route::get('/admin/member_datas/import_member_data/export_excel', [AdminsMemberDataExportController::class, 'export'])->name('export_member_data.export');
 
   #Download Template
   Route::get('download-member-data', [AdminsDownloadController::class, 'downloadMemberData'])->name('download-member-data');
