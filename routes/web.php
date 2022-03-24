@@ -11,6 +11,7 @@ use App\Http\Controllers\Admins\GroupController;
 use App\Http\Controllers\Admins\NewsController  as AdminsNewsController;
 use App\Http\Controllers\Admins\DownloadController  as AdminsDownloadController;
 use App\Http\Controllers\Admins\MemberDataImportController  as AdminsMemberDataImportController;
+use App\Http\Controllers\Admins\ScheduleImportController  as AdminsScheduleImportController;
 use App\Http\Controllers\Admins\DashboardController  as AdminsDashboardController;
 use App\Http\Controllers\Admins\PostController  as AdminsPostController;
 use App\Http\Controllers\Admins\SectorController  as AdminsSectorController;
@@ -79,9 +80,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function(){
   #Importing Route
   Route::get('import_member_data', [AdminsMemberDataImportController::class, 'index'])->name('import_member_data.index');
   Route::post('import_member_data', [AdminsMemberDataImportController::class, 'store'])->name('import_member_data');
+  
+  Route::get('/sectors/{sector}/schedule/import_schedule', [AdminsScheduleImportController::class, 'index'])->name('import_schedule.index');
+  Route::post('import_schedule', [AdminsScheduleImportController::class, 'store'])->name('import_schedule');
 
   #Download Template
   Route::get('download-member-data', [AdminsDownloadController::class, 'downloadMemberData'])->name('download-member-data');
+  Route::get('download-schedule', [AdminsDownloadController::class, 'downloadSchedule'])->name('download-schedule');
 
   Route::get('/changePassword',[AdminsDashboardController::class,'changePassword'])->name('change-password');
   Route::get('/changePassword/update/{id}',[AdminsDashboardController::class,'updatePassword'])->name('updatePassword');

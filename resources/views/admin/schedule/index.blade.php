@@ -10,12 +10,15 @@
       <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Jadwal Ibadah {{ $sector_name }}</h6>
       </div>
-      <div class="row ml-4 mt-3">
-        <a href="{{ route('admin.schedules.create', ['sector' => $sector]) }}" class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
-      </div>
       <div class="card-body">
+        <div class="row">
+          <div class="d-flex">
+            <a href="{{ route('admin.schedules.create', ['sector' => $sector]) }}" class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
+            <a href="{{ route('import_schedule.index',['sector' => $sector]) }}" class="my-3 ml-auto btn btn-success"><i class="fas fa-file-import"> Import</i></a>
+          </div>
+        </div>
           <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <table class="table table-bordered" id="data" width="100%" cellspacing="0">
                   <thead>
                       <tr>
                           <th>Hari/Tanggal</th>
@@ -53,8 +56,26 @@
   </div>
 </div>
 
-  @push('js')
-  <script>
+@push('js')
+<script>
+  $('#data').DataTable( {
+  "language": {
+    "paginate": {
+      "first": "Awal",
+      "previous": "Sebelumnya",
+      "next": "Berikutnya",
+      "last": "Akhir"
+    },
+          "lengthMenu": "Menampilkan _MENU_ Entri",
+          "zeroRecords": "Data tidak ditemukan",
+          "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+          "infoEmpty": "Tidak ada data",
+          "infoFiltered": "(disaring dari _MAX_ total data)",
+          "search": "Cari :"
+      },
+      "pagingType": "full_numbers",
+      "ordering" : false
+} );
     $('body').on("click", ".btn-edit", function () {
       var id = $(this).attr("data-id");
       $.ajax({

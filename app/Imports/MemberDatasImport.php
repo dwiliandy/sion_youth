@@ -75,7 +75,7 @@ class MemberDatasImport implements ToModel, WithHeadingRow, SkipsOnError, WithVa
     {
       return [
           'nama_lengkap.required' => 'Nama harus diisi',
-          'tanggal_lahir.date_format:d/m/Y' => 'Format tanggal harus DD/MM/YYYY',
+          'tanggal_lahir.date_format' => 'Format tanggal harus DD/MM/YYYY',
           'tanggal lahir.required' => 'Tanggal lahir harus diisi',
           'jenis_kelamin.required' => 'Jenis kelamin harus diisi',
           'tempat_lahir.required' => 'Tempat lahir harus diisi',
@@ -95,7 +95,7 @@ class MemberDatasImport implements ToModel, WithHeadingRow, SkipsOnError, WithVa
           'required',
           Rule::in(['L','P'])
        ],
-        'tanggal_lahir' => 'required',
+        'tanggal_lahir' => 'required|date_format:d/m/Y',
         'baptis' => [
           'required', 
           Rule::in(['sudah-baptis','belum-baptis'])

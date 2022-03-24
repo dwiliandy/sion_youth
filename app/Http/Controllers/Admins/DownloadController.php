@@ -16,4 +16,10 @@ class DownloadController extends Controller
       $filepath = public_path('excel_template/data_anggota.xlsx');
       return Response::download($filepath); 
   }
+
+  public function downloadSchedule()
+  {
+      $filepath = public_path('excel_template/schedule.xlsx');
+      return Response::download($filepath); 
+  }
 }
