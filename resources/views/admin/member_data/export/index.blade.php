@@ -52,7 +52,7 @@
         {{ $member->family_name }}
       </td>
       <td>
-        {{ $member->group }}
+        {{ $member->kolom }}
       </td>
     </tr>
     @endforeach

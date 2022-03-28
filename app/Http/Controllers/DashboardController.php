@@ -15,15 +15,15 @@ class DashboardController extends Controller
 {
     public function welcome(){
       $startDate = Carbon::today();
-      $endDate = Carbon::today()->addDays(7);
+      $endDate = Carbon::today()->addDays(6);
       $start = date('z', strtotime(Carbon::now())) + 1;
       // end range 7 days from now
-      $end = date('z', strtotime(Carbon::now())) + 1 + 7;
-      $member_birthday = MemberData::where('is_active',true)->whereRaw("DAYOFYEAR(birth_date) BETWEEN $start AND $end")->orderByRaw('MONTH(birth_date)')->orderByRaw('DAY(birth_date)')->get();
-      // $member_birthday = MemberData::where('is_active',true)->whereMonth('birth_date', '=', Carbon::now()->format('m'))->whereDay('birth_date', '=', Carbon::now()->format('d'))->get();
+      $end = date('z', strtotime(Carbon::now())) + 1 + 6;
+      
       $articles = Category::where('name','artikel')->first()->posts->where('published',true)->take(6);
       $khotbahs = Category::where('name','khotbah')->first()->posts->where('published',true)->take(6);
       $schedules = Schedule::whereBetween('date', [$startDate, $endDate])->with('sector')->get();
+      $member_birthday = MemberData::where('is_active',true)->whereRaw("DAYOFYEAR(birth_date) BETWEEN $start AND $end")->orderByRaw('MONTH(birth_date)')->orderByRaw('DAY(birth_date)')->get();
       $sliders = Slider::query()->orderBy('order','asc')->get();
       return view('welcome',[
         'articles' => $articles,

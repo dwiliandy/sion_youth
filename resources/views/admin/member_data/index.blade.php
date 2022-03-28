@@ -51,7 +51,7 @@
                       </td>
                       <td>{{ $member_data->birth_place }}</td>
                       <td>{{ Carbon\Carbon::parse($member_data->birth_date)->isoFormat('D MMMM Y') }}</td>
-                      <td>{{ $member_data->group }}</td>
+                      <td>{{ $member_data->kolom }}</td>
                       <td>
                         @if ($member_data->baptize == 'already')
                           Sudah

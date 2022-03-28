@@ -20,7 +20,7 @@ class MemberDatasExport implements FromView
     {
         
         return view('admin.member_data.export.index', [
-          'member_datas' => MemberData::where('is_active',1)->get()
+          'member_datas' => MemberData::select('group as kolom', 'name', 'birth_date','birth_place','family_name', 'baptize','sidi', 'sex','id_number')->orderByRaw('CONVERT(kolom, SIGNED) asc')->get()
         ]);
     }
     
