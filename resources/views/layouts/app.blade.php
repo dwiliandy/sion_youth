@@ -34,6 +34,18 @@
 </head>
 
 <body>
+  @if ($title == 'Main Page')
+    <style>
+      .slider {
+              width: 100%;
+              max-height: 100vh;
+          }
+          .body-content{
+            margin-top: -16px
+          }
+    </style>
+    @include('slider')
+  @endif
   <div class="body-content min-vh-100 d-flex flex-column justify-content-between" style="background-color: #eee">
       <div>
         @include('components.flash-message-guest')

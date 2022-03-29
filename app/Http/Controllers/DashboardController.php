@@ -24,13 +24,11 @@ class DashboardController extends Controller
       $khotbahs = Category::where('name','khotbah')->first()->posts->where('published',true)->take(6);
       $schedules = Schedule::whereBetween('date', [$startDate, $endDate])->with('sector')->get();
       $member_birthday = MemberData::where('is_active',true)->whereRaw("DAYOFYEAR(birth_date) BETWEEN $start AND $end")->orderByRaw('MONTH(birth_date)')->orderByRaw('DAY(birth_date)')->get();
-      $sliders = Slider::query()->orderBy('order','asc')->get();
       return view('welcome',[
         'articles' => $articles,
         'khotbahs' => $khotbahs,
         'schedules' => $schedules,
         'member_birthday' => $member_birthday,
-        'sliders' => $sliders,
       ]);
     }
 }
