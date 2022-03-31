@@ -12,7 +12,7 @@
       </div>
       <div class="card-body">
         @if ($sliders->count() < 6)
-          <button type="button" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#modal-create">
+          <button type="button" class="btn btn-primary btn-circle" data-toggle="tooltip" data-placement="top" title="Tambah Data"  data-bs-toggle="modal" data-bs-target="#modal-create">
             <i class="fas fa-plus"></i>
           </button>
         @endif
@@ -37,10 +37,10 @@
                           <i class="fas fa-edit"></i>
                         </button>
                         {{-- <a href="{{ route('admin.slider.edit', ['slider' => $slider->id]) }}" class="badge bg-warning"><i class="fas fa-edit"></i></a> --}}
-                        <form action="{{ route('admin.sliders.destroy', ['slider' => $slider->id]) }}" method="post" class="d-inline">
+                        <form action="{{ route('admin.sliders.destroy', ['slider' => $slider->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data"  method="post" class="d-inline">
                           @csrf
                           @method('delete')
-                          <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
+                          <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data"  onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
                         </form>
                       </td>
                     </tr>

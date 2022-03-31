@@ -43,23 +43,23 @@
                         @endif
                       </td>
                       <td>
-                        <a href="{{ route('admin.posts.show', ['post' => $post->id]) }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}" class="badge bg-warning"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.posts.show', ['post' => $post->id]) }}" class="badge bg-info" data-toggle="tooltip" data-placement="top" title="Lihat Data" ><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}" class="badge bg-warning" data-toggle="tooltip" data-placement="top" title="Edit Data" ><i class="fas fa-edit"></i></a>
                         @if (!$post->published)
                           <form action="{{ route('publish-data', ['post' => $post->id]) }}" method="post" class="d-inline">
                             @csrf
-                            <button class="badge bg-success border-0" onclick="return confirm('Yakin untuk publish data')"><i class="fas fa-check-circle"></i></button>
+                            <button class="badge bg-success border-0" data-toggle="tooltip" data-placement="top" title="Publish Data"  onclick="return confirm('Yakin untuk publish data')"><i class="fas fa-check-circle"></i></button>
                           </form>
                         @else
                         <form action="{{ route('unpublish-data', ['post' => $post->id]) }}" method="post" class="d-inline">
                           @csrf
-                          <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk unpublish data')"><i class="fas fa-times-circle"></i></button>
+                          <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Unpublish Data"  onclick="return confirm('Yakin untuk unpublish data')"><i class="fas fa-times-circle"></i></button>
                         </form>
                         @endif
                         <form action="{{ route('admin.posts.destroy', ['post' => $post->id]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
-                          <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
+                          <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data"  onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
                         </form>
                       </td>
                     </tr>

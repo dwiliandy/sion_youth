@@ -11,7 +11,7 @@
           <h6 class="m-0 font-weight-bold text-primary">Berita</h6>
       </div>
       <div class="row ml-4 mt-3">
-        <a href="{{ route('admin.news.create') }}" class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
+        <a href="{{ route('admin.news.create') }}" data-toggle="tooltip" data-placement="top" title="Tambah Data"  class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
       </div>
       <div class="card-body">
           <div class="table-responsive">
@@ -27,12 +27,12 @@
                     <tr>
                       <td>{{ $news->title }}</td>
                       <td>
-                        <a href="{{ route('admin.news.show', ['news' => $news->id]) }}" class="badge bg-info"><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('admin.news.edit', ['news' => $news->id]) }}" class="badge bg-warning"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.news.show', ['news' => $news->id]) }}" class="badge bg-info" data-toggle="tooltip" data-placement="top" title="Lihat Data" ><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('admin.news.edit', ['news' => $news->id]) }}" class="badge bg-warning" data-toggle="tooltip" data-placement="top" title="Edit Data" ><i class="fas fa-edit"></i></a>
                         <form action="{{ route('admin.news.destroy', ['news' => $news->id]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
-                          <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
+                          <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data"  onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
                         </form>
                       </td>
                     </tr>

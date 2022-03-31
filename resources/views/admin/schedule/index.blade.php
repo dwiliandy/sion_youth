@@ -13,8 +13,8 @@
       <div class="card-body">
         <div class="row">
           <div class="d-flex">
-            <a href="{{ route('admin.schedules.create', ['sector' => $sector]) }}" class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
-            <a href="{{ route('import_schedule.index',['sector' => $sector]) }}" class="my-3 ml-auto btn btn-success"><i class="fas fa-file-import"> Import</i></a>
+            <a href="{{ route('admin.schedules.create', ['sector' => $sector]) }}" data-toggle="tooltip" data-placement="top" title="Tambah Data"   class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
+            <a href="{{ route('import_schedule.index',['sector' => $sector]) }}" data-toggle="tooltip" data-placement="top" title="Import Data" class="my-3 ml-auto btn btn-primary btn-circle"><i class="fas fa-file-import"></i></a>
           </div>
         </div>
           <div class="table-responsive">
@@ -40,11 +40,11 @@
                       <td>{{ $schedule->group }}</td>
                       <td>{{ $schedule->preacher }}</td>
                       <td>
-                        <a href="{{ route('admin.schedules.edit', ['schedule' => $schedule->id]) }}" class="badge bg-warning"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.schedules.edit', ['schedule' => $schedule->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data" class="badge bg-warning"><i class="fas fa-edit"></i></a>
                         <form action="{{ route('admin.schedules.destroy', ['schedule' => $schedule->id]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
-                          <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
+                          <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
                         </form>
                       </td>
                     </tr>

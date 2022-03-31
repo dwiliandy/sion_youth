@@ -10,7 +10,7 @@
         <div class="card-body d-flex flex-column dashboard-card">
           <h1>{{ ucwords($post->title) }}</h1>
           <div class="d-sm-flex align-items-start mb-4">
-            <a href="{{ route('admin.posts.show', ['post' => $post->id]) }}" class="btn btn-success mr-1  btn-sm"><i class="fas fa-long-arrow-alt-left"> Kembali ke halaman awal</i></a>
+            <a href="{{ route('admin.posts.index', ['post' => $post->id]) }}" class="btn btn-success mr-1  btn-sm"><i class="fas fa-long-arrow-alt-left"> Kembali ke halaman awal</i></a>
             <a href="{{ route('admin.posts.edit', ['post' => $post->id]) }}" class="btn btn-warning mr-1  btn-sm"><i class="fas fa-edit"> Edit</i></a>
             @if (!$post->published)
               <form action="{{ route('publish-data', ['post' => $post->id]) }}" method="post" class="d-inline">

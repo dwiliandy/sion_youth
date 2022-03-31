@@ -13,7 +13,7 @@
       </div>
     @endcan
       <div class="row ml-4 mt-3">
-        <button type="button" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#modal-create">
+        <button type="button" data-toggle="tooltip" data-placement="top" title="Tambah Data" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#modal-create">
           <i class="fas fa-plus"></i>
         </button>
       </div>
@@ -32,16 +32,16 @@
                       <td>{{ ucwords($sector->name) }}</td>
                       <td>
                         @if(Gate::check($sector->name) || Gate::check('super admin'))
-                          <a href="{{ route('get-schedule', ['sector' => $sector->id]) }}" class="badge bg-info"><i class="fas fa-calendar"></i></a>
+                          <a href="{{ route('get-schedule', ['sector' => $sector->id]) }}"  data-toggle="tooltip" data-placement="top" title="Lihat Jadwal" class="badge bg-info"><i class="fas fa-calendar"></i></a>
                         @endif
                         @can('super admin')
-                          <button type="button" class="badge bg-warning border-0 btn-edit" data-id="{{ $sector->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
+                          <button type="button" class="badge bg-warning border-0 btn-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"  data-id="{{ $sector->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
                             <i class="fas fa-edit"></i>
                           </button>
                           <form action="{{ route('admin.sectors.destroy', ['sector' => $sector->id]) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
-                            <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
+                            <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data"  onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
                           </form>
                         @endcan
                       </td>

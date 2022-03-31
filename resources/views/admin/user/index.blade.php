@@ -11,7 +11,7 @@
           <h6 class="m-0 font-weight-bold text-primary">Daftar Admin</h6>
       </div>
       <div class="row ml-4 mt-3">
-        <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
+        <a href="{{ route('admin.users.create') }}" data-toggle="tooltip" data-placement="top" title="Tambah Data" class="btn btn-primary btn-circle"><i class="fas fa-plus"></i></a>
       </div>
       <div class="card-body">
           <div class="table-responsive">
@@ -29,11 +29,11 @@
                       <td>{{ $user->name }}</td>
                       <td>{{ $user->email }}</td>
                       <td>
-                        <a href="{{ route('admin.users.edit', ['user' => $user->id]) }}" class="badge bg-warning"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.users.edit', ['user' => $user->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data"  class="badge bg-warning"><i class="fas fa-edit"></i></a>
                         <form action="{{ route('admin.users.destroy', ['user' => $user->id]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
-                          <button class="badge bg-danger border-0" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
+                          <button class="badge bg-danger border-0"  data-toggle="tooltip" data-placement="top" title="Hapus Data" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>
                         </form>
                       </td>
                     </tr>

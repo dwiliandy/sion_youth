@@ -11,7 +11,7 @@
           <h6 class="m-0 font-weight-bold text-primary">Data Kolom</h6>
       </div>
       <div class="row ml-4 mt-3">
-        <button type="button" class="btn btn-primary btn-circle" data-bs-toggle="modal" data-bs-target="#modal-create">
+        <button type="button" class="btn btn-primary btn-circle" data-toggle="tooltip" data-placement="top" title="Tambah atau Hapus Data"  data-bs-toggle="modal" data-bs-target="#modal-create">
           <i class="fas fa-edit"></i>
         </button>
       </div>
