@@ -36,9 +36,9 @@
                     <tr>
                       <td>{{ $news->title }}</td>
                       <td>
-                        <a href="{{ route('admin.news.show', ['news' => $news->id]) }}" class="badge bg-info" data-toggle="tooltip" data-placement="top" title="Lihat Data" ><i class="fas fa-eye"></i></a>
-                        <a href="{{ route('admin.news.edit', ['news' => $news->id]) }}" class="badge bg-warning" data-toggle="tooltip" data-placement="top" title="Edit Data" ><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('admin.news.destroy', ['news' => $news->id]) }}" method="post" class="d-inline">
+                        <a href="{{ route('admin.news.show', ['news' => Hashids::encode($news->id)]) }}" class="badge bg-info" data-toggle="tooltip" data-placement="top" title="Lihat Data" ><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('admin.news.edit', ['news' => Hashids::encode($news->id)]) }}" class="badge bg-warning" data-toggle="tooltip" data-placement="top" title="Edit Data" ><i class="fas fa-edit"></i></a>
+                        <form action="{{ route('admin.news.destroy', ['news' => Hashids::encode($news->id)]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data"  onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>

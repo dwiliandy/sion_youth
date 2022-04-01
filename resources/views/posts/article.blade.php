@@ -41,13 +41,13 @@
                                 <div class="card">
                                     @if ($article->image)
                                     <div class="img-hover-zoom">
-                                        <a href="{{ route('posts.show', ['post' => $article->id]) }}">
+                                        <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}">
                                             <img src="{{ asset('storage/'. $article->image) }}" class="card-img-top">
                                         </a>
                                     </div>
                                     @else
                                     <div class="img-hover-zoom">
-                                      <a href="{{ route('posts.show', ['post' => $article->id]) }}">
+                                      <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}">
                                         <img src="{{ asset('sion-1.jfif') }}" class="card-img-top">
                                     </a>
                                   </div>
@@ -55,12 +55,12 @@
                                     @endif
                                     <div class="card-body text-center">
                                         <h5 class="card-title"><a
-                                                href="{{ route('posts.show', ['post' => $article->id]) }}"
+                                                href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}"
                                                 class="text-decoration-none text-dark">{{ ucwords($article->title) }}</a>
                                         </h5>
                                         <small>{{ Carbon\Carbon::parse($article->published_at)->isoFormat('dddd, D MMMM Y') }}</small>
                                         <p class="card-text pt-2">{{$article->excerpt}}</p>
-                                        <a href="{{ route('posts.show', ['post' => $article->id]) }}"
+                                        <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}"
                                             class="btn btn-login">Baca Selengkapnya</a>
                                     </div>
                                 </div>

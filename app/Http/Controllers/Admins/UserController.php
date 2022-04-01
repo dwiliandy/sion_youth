@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Torann\Hashids\Facade\Hashids;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
 
@@ -48,7 +49,8 @@ class UserController extends Controller
       return redirect()->route('admin.users.index')->with(['success' => 'Data berhasil dibuat']);
     }
 
-    public function edit(User $user){
+    public function edit($id){
+      $user = User::find(Hashids::decode($id)[0]);
       $permissions = Permission::where('id', '!=', Permission::first()->id)->get();
       return view('admin.user.edit',compact(['permissions', 'user']));
     }
@@ -86,8 +88,9 @@ class UserController extends Controller
       return redirect()->route('admin.users.index')->with(['success' => 'Data berhasil diubah']);
     }
 
-    public function destroy(User $user){
-      User::destroy($user->id);
+    public function destroy($id){
+      
+      User::destroy(Hashids::decode($id)[0]);
     return redirect()->route('admin.users.index')->with(['success' => 'Data berhasil dihapus']);
   }
 

@@ -45,10 +45,10 @@
                 <p class="mt-3">{!! $post->body !!}</p>
                 <div class="d-flex">
                   <div class="px-2">
-                    <p class="btn btn-primary" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('{{ route('posts.show', ['post' => $post->id]) }}'),'facebook-share-dialog','width=626,height=436'); return false;" /><i class="fab fa-facebook"> Bagikan</i></p>
+                    <p class="btn btn-primary" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('{{ route('posts.show', ['post' => Hashids::encode($post->id)]) }}'),'facebook-share-dialog','width=626,height=436'); return false;" /><i class="fab fa-facebook"> Bagikan</i></p>
                   </div>
                   <div class="px-2">
-                    <a target="_blank" href="whatsapp://send?text={{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-success"><i class="fab fa-whatsapp"> Bagikan</i></a>
+                    <a target="_blank" href="whatsapp://send?text={{ route('posts.show', ['post' => Hashids::encode($post->id)]) }}" class="btn btn-success"><i class="fab fa-whatsapp"> Bagikan</i></a>
                   </div>
                 </div>
                 

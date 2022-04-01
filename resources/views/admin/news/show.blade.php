@@ -22,8 +22,8 @@
           <h1>{{ ucwords($news->title) }}</h1>
           <div class="d-sm-flex align-items-start mb-4">
             <a href="{{ route('admin.news.index') }}" class="btn btn-success mr-1  btn-sm"><i class="fas fa-long-arrow-alt-left"> Kembali ke halaman awal</i></a>
-            <a href="{{ route('admin.news.edit', ['news' => $news->id]) }}" class="btn btn-warning mr-1  btn-sm"><i class="fas fa-edit"> Edit</i></a>
-            <form action="{{ route('admin.news.destroy', ['news' => $news->id]) }}" method="post" class="d-inline">
+            <a href="{{ route('admin.news.edit', ['news' => Hashids::encode($news->id)]) }}" class="btn btn-warning mr-1  btn-sm"><i class="fas fa-edit"> Edit</i></a>
+            <form action="{{ route('admin.news.destroy', ['news' => Hashids::encode($news->id)]) }}" method="post" class="d-inline">
               @csrf
               @method('delete')
               <button class="btn btn-danger  btn-sm" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"> Hapus</i></button>

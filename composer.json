@@ -14,6 +14,7 @@
         "maatwebsite/excel": "^3.1",
         "phpoffice/phpspreadsheet": "^1.22",
         "spatie/laravel-permission": "^5.5",
+        "torann/hashids": "^3.0",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {

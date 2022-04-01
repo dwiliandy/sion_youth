@@ -43,7 +43,7 @@
                     @error('time')
                       <p class="text-danger">{{ $message }}</p>
                     @enderror
-                    <input type="text" class="form-control bs-timepicker @error('time') is-invalid @enderror" name="time" id="time" value="{{ old('time', $schedule->time) }}">
+                    <input type="text" autocomplete="off"  class="form-control bs-timepicker @error('time') is-invalid @enderror" name="time" id="time" value="{{ old('time', $schedule->time) }}">
                 </div>
                 <div class="mb-3 col-md-4">
                     <label class="form-label">Kolom</label>

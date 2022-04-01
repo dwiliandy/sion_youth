@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Torann\Hashids\Facade\Hashids;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,11 +23,13 @@ class PostController extends Controller
       return view('admin.post.index', compact(['posts']));
     }
     
-    public function show(Post $post){
+    public function show($id){
+      $post = Post::find(Hashids::decode($id)[0]);
       return view('admin.post.show', compact(['post']));
     }
 
-    public function edit(Post $post){
+    public function edit($id){
+      $post = Post::find(Hashids::decode($id)[0]);
       $categories = Category::all();
       return view('admin.post.edit', compact(['post','categories']));
     }
@@ -61,8 +64,8 @@ class PostController extends Controller
       return redirect()->route('admin.posts.index')->with(['success' => 'Data berhasil diubah']);
     }
 
-    public function destroy(Post $post){
-      
+    public function destroy($id){
+      $post = Post::find(Hashids::decode($id)[0]);
       if($post->image){
         Storage::delete($post->image);
       }
@@ -70,12 +73,14 @@ class PostController extends Controller
       return redirect()->route('admin.posts.index')->with(['success' => 'Data berhasil dihapus']);
     }
 
-    public function publishData(Post $post){
+    public function publishData($id){
+      $post = Post::find(Hashids::decode($id)[0]);
       $post->update(['published' => true, 'published_at' => Carbon::now()]);
       return redirect()->route('admin.posts.index')->with(['success' => 'Data berhasil diperbarui']);
     }
 
-    public function unpublishData(Post $post){
+    public function unpublishData($id){
+      $post = Post::find(Hashids::decode($id)[0]);
       $post->update(['published' => false, 'published_at' => null]);
       return redirect()->route('admin.posts.index')->with(['success' => 'Data berhasil diperbarui']);
     }

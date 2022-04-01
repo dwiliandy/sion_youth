@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Torann\Hashids\Facade\Hashids;
 
 class NewsController extends Controller
 {
@@ -13,7 +14,7 @@ class NewsController extends Controller
     }
 
     public function show($id){
-      $news = News::find($id);
+      $news = News::find(Hashids::decode($id)[0]);
         $post_url = route('news.show', ['news' => $news->id]);
         $title = ucwords($news->title);
         $post_excerpt = $news->excerpt;

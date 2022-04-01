@@ -47,7 +47,7 @@
                                     @enderror
                                     <input type="text"
                                         class="form-control bs-timepicker @error('time') is-invalid @enderror"
-                                        name="time" id="time" value="{{ old('time') }}">
+                                        name="time" id="time"  autocomplete="off" value="{{ old('time') }}">
                                 </div>
                                 <div class="mb-3 col-md-4">
                                     <label class="form-label">Kolom</label>

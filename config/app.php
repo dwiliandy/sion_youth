@@ -178,6 +178,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Torann\Hashids\HashidsServiceProvider::class,
 
     ],
 
@@ -194,6 +195,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
       'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+      'Hashids' => Torann\Hashids\Facade\Hashids::class,
     ])->toArray(),
 
 ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admins;
 use App\Models\News;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Torann\Hashids\Facade\Hashids;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +20,8 @@ class NewsController extends Controller
       return view('admin.news.index', compact(['newses']));
     }
 
-    public function show(News $news){
+    public function show($id){
+      $news = News::find(Hashids::decode($id)[0]);
       return view('admin.news.show', compact(['news']));
     }
 
@@ -50,7 +52,8 @@ class NewsController extends Controller
       return redirect()->route('admin.news.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
-    public function edit(News $news){
+    public function edit($id){
+      $news = News::find(Hashids::decode($id)[0]);
       return view('admin.news.edit', compact(['news']) );
     }
 
@@ -78,7 +81,8 @@ class NewsController extends Controller
       return redirect()->route('admin.news.index')->with('success', 'Data berhasil diubah!');
     }
 
-    public function destroy(News $news){
+    public function destroy($id){
+      $news = News::find(Hashids::decode($id)[0]);
       if($news->image){
         Storage::delete($news->image);
       }

@@ -6,11 +6,12 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Torann\Hashids\Facade\Hashids;
 
 class PostController extends Controller
 {    
       public function show($id){
-        $post = Post::find($id);
+        $post = Post::find(Hashids::decode($id)[0]);
         $post_url = route('posts.show', ['post' => $post->id]);
         $title = ucwords($post->title);
         $post_excerpt = $post->excerpt;

@@ -131,25 +131,34 @@
                     <h5 class="home">Khotbah</h5>
                     <div class="row justify-content-start">
                         @if ($khotbahs->count() > 0)
-                        @foreach ($khotbahs as $khotbah)
                         <div class="col-lg-4  pt-2">
-                            <div class="card">
+                          <div class="card">
                               @if ($khotbah->image)
-                                <img src="{{ asset('storage/'. $khotbah->image) }}" alt="">
+                              <div class="img-hover-zoom">
+                                  <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}">
+                                      <img src="{{ asset('storage/'. $khotbah->image) }}" class="card-img-top">
+                                  </a>
+                              </div>
                               @else
-                                <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
-                              @endif
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $khotbah->title }}</h5>
-                                    <small>{{ Carbon\Carbon::parse($khotbah->published_at)->isoFormat('dddd, D MMMM Y H:m') }}</small>
-                                    <hr>
-                                    <p class="card-text">{{$khotbah->excerpt}}</p>
-                                    <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}"
-                                        class="btn btn-login">Baca Selengkapnya</a>
-                                </div>
+                              <div class="img-hover-zoom">
+                                <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}">
+                                  <img src="{{ asset('sion-1.jfif') }}" class="card-img-top">
+                              </a>
                             </div>
-                        </div>
-                        @endforeach
+                              
+                              @endif
+                              <div class="card-body text-center">
+                                  <h5 class="card-title"><a
+                                          href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}"
+                                          class="text-decoration-none text-dark">{{ ucwords($khotbah->title) }}</a>
+                                  </h5>
+                                  <small>{{ Carbon\Carbon::parse($khotbah->published_at)->isoFormat('dddd, D MMMM Y') }}</small>
+                                  <p class="card-text pt-2">{{$khotbah->excerpt}}</p>
+                                  <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}"
+                                      class="btn btn-login">Baca Selengkapnya</a>
+                              </div>
+                          </div>
+                      </div>
                         <div class="py-3 d-flex align-items-end flex-column">
                             <a class="text-right" href="{{ route('khotbah') }}">Lihat Semua Khotbah</a>
                         </div>
@@ -170,22 +179,33 @@
                         @if ($articles->count() > 0)
                         @foreach ($articles as $article)
                         <div class="col-lg-4  pt-2">
-                            <div class="card">
+                          <div class="card">
                               @if ($article->image)
-                                <img src="{{ asset('storage/'. $article->image) }}" alt="">
+                              <div class="img-hover-zoom">
+                                  <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}">
+                                      <img src="{{ asset('storage/'. $article->image) }}" class="card-img-top">
+                                  </a>
+                              </div>
                               @else
-                                <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
-                              @endif
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $article->title }}</h5>
-                                    <small>{{ Carbon\Carbon::parse($article->published_at)->isoFormat('dddd, D MMMM Y H:m') }}</small>
-                                    <hr>
-                                    <p class="card-text">{{$article->excerpt}}</p>
-                                    <a href="{{ route('posts.show', ['post' => $article->id]) }}"
-                                        class="btn btn-login">Baca Selengkapnya</a>
-                                </div>
+                              <div class="img-hover-zoom">
+                                <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}">
+                                  <img src="{{ asset('sion-1.jfif') }}" class="card-img-top">
+                              </a>
                             </div>
-                        </div>
+                              
+                              @endif
+                              <div class="card-body text-center">
+                                  <h5 class="card-title"><a
+                                          href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}"
+                                          class="text-decoration-none text-dark">{{ ucwords($article->title) }}</a>
+                                  </h5>
+                                  <small>{{ Carbon\Carbon::parse($article->published_at)->isoFormat('dddd, D MMMM Y') }}</small>
+                                  <p class="card-text pt-2">{{$article->excerpt}}</p>
+                                  <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}"
+                                      class="btn btn-login">Baca Selengkapnya</a>
+                              </div>
+                          </div>
+                      </div>
                         @endforeach
                         <div class="py-3 d-flex align-items-end flex-column">
                             <a class="text-right" href="{{ route('article') }}">Lihat Semua Artikel</a>

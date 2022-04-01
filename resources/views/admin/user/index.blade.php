@@ -38,8 +38,8 @@
                       <td>{{ $user->name }}</td>
                       <td>{{ $user->email }}</td>
                       <td>
-                        <a href="{{ route('admin.users.edit', ['user' => $user->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data"  class="badge bg-warning"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('admin.users.destroy', ['user' => $user->id]) }}" method="post" class="d-inline">
+                        <a href="{{ route('admin.users.edit', ['user' => Hashids::encode($user->id)]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data"  class="badge bg-warning"><i class="fas fa-edit"></i></a>
+                        <form action="{{ route('admin.users.destroy', ['user' => Hashids::encode($user->id)]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="badge bg-danger border-0"  data-toggle="tooltip" data-placement="top" title="Hapus Data" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>

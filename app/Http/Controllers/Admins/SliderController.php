@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Torann\Hashids\Facade\Hashids;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,7 +15,7 @@ class SliderController extends Controller
       $this->middleware('can:super admin');
   }
     public function index(){
-      $sliders = Slider::all();
+      $sliders = Slider::orderBy('order','asc')->get();
       $slider_order = Slider::pluck('order')->toArray();
       $differenceArray = array_diff([1,2,3,4,5,6], $slider_order);
       return view('admin.slider.index', compact('sliders','differenceArray'));
@@ -39,12 +40,14 @@ class SliderController extends Controller
       return redirect()->route('admin.sliders.index')->with(['success' => 'Data berhasil ditambahkan']);
     }
 
-    public function edit(Slider $slider){
+    public function edit($id){
+      $slider = array();
+      array_push($slider, ['id' => $id, 'order' => Slider::find(Hashids::decode($id)[0])->order]);
       return response()->json($slider);
     }
 
     public function updateData(Request $request){
-      $slider = Slider::find($request->id);
+      $slider = Slider::find(Hashids::decode($request->id)[0]);
       $order_slider = Slider::where('order', $request->order);
 
       if ($order_slider){
@@ -54,7 +57,8 @@ class SliderController extends Controller
       return redirect()->route('admin.sliders.index')->with(['success' => 'Data berhasil diubah']);
     }
 
-    public function destroy(Slider $slider){
+    public function destroy($id){
+      $slider = Slider::find(Hashids::decode($id)[0]);
         Storage::delete($slider->image);
         Slider::destroy($slider->id);
       return redirect()->route('admin.sliders.index')->with(['success' => 'Data berhasil dihapus']);

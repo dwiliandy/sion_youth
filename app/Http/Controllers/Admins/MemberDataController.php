@@ -6,6 +6,7 @@ use App\Models\Group;
 use App\Models\Schedule;
 use App\Models\MemberData;
 use Illuminate\Http\Request;
+use Torann\Hashids\Facade\Hashids;
 use App\Http\Controllers\Controller;
 
 class MemberDataController extends Controller
@@ -52,7 +53,8 @@ class MemberDataController extends Controller
       return redirect()->route('admin.member_datas.index')->with(['success' => 'Data berhasil dibuat']);
     }
 
-    public function edit(MemberData $member_data){
+    public function edit($id){
+      $member_data = MemberData::find(Hashids::decode($id)[0]);
       $groups = Group::all();
       return view('admin.member_data.edit', compact(['member_data','groups']));
     }
@@ -84,12 +86,14 @@ class MemberDataController extends Controller
       return redirect()->route('admin.member_datas.index')->with(['success' => 'Data berhasil diubah']);
     }
 
-    public function destroy(MemberData $member_data){
+    public function destroy($id){
+      $member_data = MemberData::find(Hashids::decode($id)[0]);
       MemberData::destroy($member_data->id);
       return redirect()->route('admin.member_datas.index')->with(['success' => 'Data berhasil dihapus']);
     }
 
-    public function isActive(MemberData $member_data){
+    public function isActive($id){
+      $member_data = MemberData::find(Hashids::decode($id)[0]);
       if($member_data->is_active){
         $member_data->update(['is_active' => false]);
       }

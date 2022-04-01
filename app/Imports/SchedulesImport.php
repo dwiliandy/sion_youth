@@ -71,6 +71,7 @@ class SchedulesImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
 
     public function rules(): array
     {
+  
       return [
         'tanggal' => 'required|date_format:d/m/Y',
         'waktu' => 'required|date_format:H:i',

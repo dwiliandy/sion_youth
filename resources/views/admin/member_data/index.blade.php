@@ -78,19 +78,19 @@
                         @endif
                       </td>
                       <td>
-                        <a href="{{ route('admin.member_datas.edit', ['member_data' => $member_data->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data" class="badge bg-warning"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.member_datas.edit', ['member_data' => Hashids::encode($member_data->id)]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data" class="badge bg-warning"><i class="fas fa-edit"></i></a>
                         @if ($member_data->is_active == 1)
-                        <form action="{{ route('admin.member_datas.is-active', ['member_data' => $member_data->id]) }}" method="post" class="d-inline">
+                        <form action="{{ route('admin.member_datas.is-active', ['member_data' => Hashids::encode($member_data->id)]) }}" method="post" class="d-inline">
                           @csrf
                             <button class="badge bg-success border-0" data-toggle="tooltip" data-placement="top" title="Nonaktifkan Data" onclick="return confirm('Yakin untuk menonaktifkan anggota')"><i class="fas fa-check-circle"></i></button>
                         </form>
                         @else
-                        <form action="{{ route('admin.member_datas.is-active', ['member_data' => $member_data->id]) }}" method="post" class="d-inline">
+                        <form action="{{ route('admin.member_datas.is-active', ['member_data' => Hashids::encode($member_data->id)]) }}" method="post" class="d-inline">
                           @csrf
                           <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Aktifkan Data" onclick="return confirm('Yakin untuk mengaktifkan anggota')"><i class="fas fa-times-circle"></i></button>
                         </form>
                         @endif
-                        <form action="{{ route('admin.member_datas.destroy', ['member_data' => $member_data->id]) }}" method="post" class="d-inline">
+                        <form action="{{ route('admin.member_datas.destroy', ['member_data' => Hashids::encode($member_data->id)]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data"  onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>

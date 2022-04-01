@@ -28,16 +28,16 @@
             <div class="card mb-3">
               @if ($newses[0]->image)
               <div class="img-hover-zoom">
-                <a href="{{ route('news.show', ['news' => $newses[0]->id]) }}">
+                <a href="{{ route('news.show', ['news' => Hashids::encode($newses[0]->id)]) }}">
                   <img src="{{ asset('storage/'. $newses[0]->image) }}" class="card-img-top" >
                 </a>
               </div>
               @endif
               <div class="card-body text-center">
-                <h5 class="card-title"><a href="{{ route('news.show', ['news' => $newses[0]->id]) }}" class="text-decoration-none text-dark">{{ ucwords($newses[0]->title) }}</a></h5>
+                <h5 class="card-title"><a href="{{ route('news.show', ['news' => Hashids::encode($newses[0]->id)]) }}" class="text-decoration-none text-dark">{{ ucwords($newses[0]->title) }}</a></h5>
                 <small>{{ Carbon\Carbon::parse($newses[0]->created_at)->isoFormat('dddd, D MMMM Y') }}</small>
                 <p class="card-text pt-2">{{$newses[0]->excerpt}}</p>
-                <a href="{{ route('news.show', ['news' => $newses[0]->id]) }}" class="btn btn-login">Baca Selengkapnya</a>
+                <a href="{{ route('news.show', ['news' => Hashids::encode($newses[0]->id)]) }}" class="btn btn-login">Baca Selengkapnya</a>
               </div>
             </div>
             <div class="row justify-content-start">
@@ -46,7 +46,7 @@
                   <div class="card">
                     @if ($news->image)
                     <div class="img-hover-zoom">
-                      <a href="{{ route('news.show', ['news' => $news->id]) }}">
+                      <a href="{{ route('news.show', ['news' => Hashids::encode($news->id)]) }}">
                         <img src="{{ asset('storage/'. $news->image) }}" class="card-img-top" >
                       </a>
                     </div>
@@ -54,10 +54,10 @@
                       <img src="{{ asset('sion-1.jfif') }}" class="card-img-top" alt="...">
                     @endif
                     <div class="card-body text-center">
-                      <h5 class="card-title"><a href="{{ route('news.show', ['news' => $news->id]) }}" class="text-decoration-none text-dark">{{ ucwords($news->title) }}</a></h5>
+                      <h5 class="card-title"><a href="{{ route('news.show', ['news' => Hashids::encode($news->id)]) }}" class="text-decoration-none text-dark">{{ ucwords($news->title) }}</a></h5>
                       <small>{{ Carbon\Carbon::parse($news->created_at)->isoFormat('dddd, D MMMM Y') }}</small>
                       <p class="card-text pt-2">{{$news->excerpt}}</p>
-                      <a href="{{ route('news.show', ['news' => $news->id]) }}" class="btn btn-login">Baca Selengkapnya</a>
+                      <a href="{{ route('news.show', ['news' => Hashids::encode($news->id)]) }}" class="btn btn-login">Baca Selengkapnya</a>
                     </div>
                   </div>
                 </div>
