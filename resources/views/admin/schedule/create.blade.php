@@ -9,6 +9,18 @@
 
 @section('content')
 <div class="container-fluid">
+
+  {{-- Breadcrumb --}}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('admin.sectors.index') }}">Kelompok</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('get-schedule', ['sector' => $sector]) }}">Jadwal Ibadah {{ Str::title($sector_name) }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Tambah Jadwal</li>
+    </ol>
+  </nav>
+  {{-- End Breadcrumb --}}
+
     <div class="row">
         <div class="col-lg-12 mt-2 mb-2">
             <div class="card dashboard service-section mt-2 d-flex justify-content-around">

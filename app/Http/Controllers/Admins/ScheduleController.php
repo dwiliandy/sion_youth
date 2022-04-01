@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use App\Models\Group;
 use App\Models\Schedule;
+use App\Models\Sector;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,7 +13,8 @@ class ScheduleController extends Controller
 
   public function create($sector){
     $groups = Group::all();
-    return view('admin.schedule.create', compact(['groups','sector']));
+    $sector_name = Sector::find($sector)->name;
+    return view('admin.schedule.create', compact(['groups','sector', 'sector_name']));
   }
 
   public function store(Request $request){
@@ -46,7 +48,8 @@ class ScheduleController extends Controller
 
   public function edit(Schedule $schedule){
     $groups = Group::all();
-    return view('admin.schedule.edit', compact(['schedule','groups']));
+    $sector_name = $schedule->sector->name;
+    return view('admin.schedule.edit', compact(['schedule','groups', 'sector_name']));
   }
 
   public function update(Request $request, Schedule $schedule){

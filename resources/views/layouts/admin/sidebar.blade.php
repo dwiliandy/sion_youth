@@ -3,7 +3,7 @@
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('root') }}">
       <div class="sidebar-brand-icon">
-        <i class="fas fa-church"></i>
+        <img class="img-profile rounded-circle" src="{{ asset('sion-1-removebg-preview.png') }}" style="width:50px;height:50px">
       </div>
       <div class="sidebar-brand-text mx-3">Sion Youth</div>
   </a>

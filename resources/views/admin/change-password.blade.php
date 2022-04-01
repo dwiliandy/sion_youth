@@ -4,6 +4,16 @@
 
 @section('content')
     <div class="container-fluid pb-4">
+
+      {{-- Breadcrumb --}}
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ganti Password</li>
+          </ol>
+        </nav>
+      {{-- End Breadcrumb --}}
+
       <div class="row">
         <div class="col-lg-6 mb-lg-0 mb-4">
           <div class="card">

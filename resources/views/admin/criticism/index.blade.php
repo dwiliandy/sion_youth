@@ -5,6 +5,14 @@
 @section('content')
 
 <div class="container-fluid">
+  {{-- Breadcrumb --}}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Kritik & Saran</li>
+    </ol>
+  </nav>
+  {{-- End Breadcrumb --}}
 
   <!-- DataTables Example -->
   <div class="card shadow mb-4">

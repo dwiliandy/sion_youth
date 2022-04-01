@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use File;
 use Repsonse;
+use App\Models\Sector;
 use Illuminate\Http\Request;
 use App\Imports\SchedulesImport;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,8 @@ use Illuminate\Support\Facades\Response;
 class ScheduleImportController extends Controller
 {
   public function index($sector){
-    return view('admin.schedule.import.index', compact('sector'));
+    $sector_name = Sector::find($sector)->name;
+    return view('admin.schedule.import.index', compact('sector','sector_name'));
   }
 
   public function store(Request $request){
