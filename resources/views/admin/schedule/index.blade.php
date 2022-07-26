@@ -5,16 +5,6 @@
 @section('content')
 <div class="container-fluid">
 
-   {{-- Breadcrumb --}}
-   <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{{ route('admin.sectors.index') }}">Kelompok</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Jadwal Ibadah {{ Str::title($sector_name) }}</li>
-    </ol>
-  </nav>
-  {{-- End Breadcrumb --}}
-
   <!-- DataTables Example -->
   <div class="card shadow mb-4">
       <div class="card-header py-3">

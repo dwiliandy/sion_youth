@@ -4,15 +4,6 @@
 
 @section('content')
 <div class="container-fluid">
-  {{-- Breadcrumb --}}
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{{ route('admin.member_datas.index') }}">Data Anggota</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Tambah Anggota</li>
-    </ol>
-  </nav>
-  {{-- End Breadcrumb --}}
   <div class="row">
     <div class="col-lg-12 mt-2 mb-2">
       <div class="card dashboard service-section mt-2 d-flex justify-content-around">

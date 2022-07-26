@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Models\Group;
-use App\Models\Sector;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Torann\Hashids\Facade\Hashids;
@@ -14,8 +13,7 @@ class ScheduleController extends Controller
 
   public function create($sector){
     $groups = Group::all();
-    $sector_name = Sector::find(Hashids::decode($sector)[0])->name;
-    return view('admin.schedule.create', compact(['groups','sector', 'sector_name']));
+    return view('admin.schedule.create', compact(['groups','sector']));
   }
 
   public function store(Request $request){

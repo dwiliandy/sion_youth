@@ -7,7 +7,7 @@
     <main class="form-signin">
       <form method="POST" action="{{ route('login') }}">
        @csrf
-          <img class="mb-4 img-fluid  mx-auto d-block" src="{{ asset('sion-1-removebg-preview.png') }}" alt="" width="200" height="200">
+          <img class="mb-4 img-fluid  mx-auto d-block" src="{{ asset('sion-1.jfif') }}" alt="" width="200" height="200">
         
         @if ($errors->any())
         <div class="alert alert-danger border-left-danger" role="alert">

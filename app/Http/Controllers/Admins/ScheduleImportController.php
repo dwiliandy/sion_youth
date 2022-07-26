@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admins;
 
 use File;
 use Repsonse;
-use App\Models\Sector;
 use Illuminate\Http\Request;
 use App\Imports\SchedulesImport;
 use Torann\Hashids\Facade\Hashids;
@@ -15,8 +14,7 @@ use Illuminate\Support\Facades\Response;
 class ScheduleImportController extends Controller
 {
   public function index($sector){
-    $sector_name = Sector::find(Hashids::decode($sector)[0])->name;
-    return view('admin.schedule.import.index', compact('sector','sector_name'));
+    return view('admin.schedule.import.index', compact('sector'));
   }
 
   public function store(Request $request){

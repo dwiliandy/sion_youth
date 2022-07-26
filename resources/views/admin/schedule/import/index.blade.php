@@ -19,18 +19,6 @@
 
 @section('content')
 <div class="container-fluid">
-
-  {{-- Breadcrumb --}}
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{{ route('admin.sectors.index') }}">Kelompok</a></li>
-      <li class="breadcrumb-item"><a href="{{ route('get-schedule', ['sector' => $sector]) }}">Jadwal Ibadah {{ Str::title($sector_name) }}</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Import Jadwal</li>
-    </ol>
-  </nav>
-  {{-- End Breadcrumb --}}
-
   <div class="card shadow mb-4">
       <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Import Jadwal</h6>

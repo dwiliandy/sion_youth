@@ -1,7 +1,7 @@
 <footer class="sticky-footer bg-white">
   <div class="container my-auto">
       <div class="copyright text-center my-auto">
-          <span>Copyright &copy; Omega 2021-{{ now()->year }}</span>
+          <span>Copyright &copy; Omega {{ now()->year }}</span>
       </div>
   </div>
 </footer>
