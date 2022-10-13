@@ -47,8 +47,7 @@ class ScheduleController extends Controller
   public function edit($id){
     $schedule = Schedule::find(Hashids::decode($id)[0]);
     $groups = Group::all();
-    $sector_name = $schedule->sector->name;
-    return view('admin.schedule.edit', compact(['schedule','groups', 'sector_name']));
+    return view('admin.schedule.edit', compact(['schedule','groups']));
   }
 
   public function update(Request $request, Schedule $schedule){

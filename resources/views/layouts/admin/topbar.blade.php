@@ -22,7 +22,7 @@
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">               
                 <a class="dropdown-item" href="{{ route('change-password') }}">
                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Ganti Password
+                    Change Password
                 </a>
                 
                 <div class="dropdown-divider"></div>
