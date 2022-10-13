@@ -50,7 +50,7 @@ class UserController extends Controller
     }
 
     public function edit($id){
-      $user = User::find(Hashids::decode($id)[0]);
+      $user = User::find($id);
       $permissions = Permission::where('id', '!=', Permission::first()->id)->get();
       return view('admin.user.edit',compact(['permissions', 'user']));
     }
@@ -90,7 +90,7 @@ class UserController extends Controller
 
     public function destroy($id){
       
-      User::destroy(Hashids::decode($id)[0]);
+      User::destroy($id);
     return redirect()->route('admin.users.index')->with(['success' => 'Data berhasil dihapus']);
   }
 

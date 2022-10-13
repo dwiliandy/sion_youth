@@ -24,12 +24,12 @@ class PostController extends Controller
     }
     
     public function show($id){
-      $post = Post::find(Hashids::decode($id)[0]);
+      $post = Post::find($id);
       return view('admin.post.show', compact(['post']));
     }
 
     public function edit($id){
-      $post = Post::find(Hashids::decode($id)[0]);
+      $post = Post::find($id);
       $categories = Category::all();
       return view('admin.post.edit', compact(['post','categories']));
     }
@@ -65,7 +65,7 @@ class PostController extends Controller
     }
 
     public function destroy($id){
-      $post = Post::find(Hashids::decode($id)[0]);
+      $post = Post::find($id);
       if($post->image){
         Storage::delete($post->image);
       }
@@ -74,13 +74,13 @@ class PostController extends Controller
     }
 
     public function publishData($id){
-      $post = Post::find(Hashids::decode($id)[0]);
+      $post = Post::find($id);
       $post->update(['published' => true, 'published_at' => Carbon::now()]);
       return redirect()->route('admin.posts.index')->with(['success' => 'Data berhasil diperbarui']);
     }
 
     public function unpublishData($id){
-      $post = Post::find(Hashids::decode($id)[0]);
+      $post = Post::find($id);
       $post->update(['published' => false, 'published_at' => null]);
       return redirect()->route('admin.posts.index')->with(['success' => 'Data berhasil diperbarui']);
     }

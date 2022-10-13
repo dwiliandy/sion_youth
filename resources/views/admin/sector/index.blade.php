@@ -32,13 +32,13 @@
                       <td>{{ ucwords($sector->name) }}</td>
                       <td>
                         @if(Gate::check($sector->name) || Gate::check('super admin'))
-                          <a href="{{ route('get-schedule', ['sector' => Hashids::encode($sector->id)]) }}"  data-toggle="tooltip" data-placement="top" title="Lihat Jadwal" class="badge bg-info"><i class="fas fa-calendar"></i></a>
+                          <a href="{{ route('get-schedule', ['sector' => $sector->id]) }}"  data-toggle="tooltip" data-placement="top" title="Lihat Jadwal" class="badge bg-info"><i class="fas fa-calendar"></i></a>
                         @endif
                         @can('super admin')
-                          <button type="button" class="badge bg-warning border-0 btn-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"  data-id="{{ Hashids::encode($sector->id) }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
+                          <button type="button" class="badge bg-warning border-0 btn-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"  data-id="{{ $sector->id }}" data-bs-toggle="modal" data-bs-target="#modal-edit">
                             <i class="fas fa-edit"></i>
                           </button>
-                          <form action="{{ route('admin.sectors.destroy', ['sector' => Hashids::encode($sector->id)]) }}" method="post" class="d-inline">
+                          <form action="{{ route('admin.sectors.destroy', ['sector' => $sector->id]) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
                             <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data"  onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>

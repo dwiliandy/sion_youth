@@ -42,12 +42,12 @@ class SliderController extends Controller
 
     public function edit($id){
       $slider = array();
-      array_push($slider, ['id' => $id, 'order' => Slider::find(Hashids::decode($id)[0])->order]);
+      array_push($slider, ['id' => $id, 'order' => Slider::find($id)->order]);
       return response()->json($slider);
     }
 
     public function updateData(Request $request){
-      $slider = Slider::find(Hashids::decode($request->id)[0]);
+      $slider = Slider::find($request->id);
       $order_slider = Slider::where('order', $request->order);
 
       if ($order_slider){
@@ -58,7 +58,7 @@ class SliderController extends Controller
     }
 
     public function destroy($id){
-      $slider = Slider::find(Hashids::decode($id)[0]);
+      $slider = Slider::find($id);
         Storage::delete($slider->image);
         Slider::destroy($slider->id);
       return redirect()->route('admin.sliders.index')->with(['success' => 'Data berhasil dihapus']);

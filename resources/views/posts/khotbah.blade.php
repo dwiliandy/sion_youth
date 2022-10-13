@@ -41,25 +41,25 @@
                                 <div class="card">
                                     @if ($khotbah->image)
                                     <div class="img-hover-zoom">
-                                        <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}">
+                                        <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}">
                                             <img src="{{ asset('storage/'. $khotbah->image) }}" class="card-img-top">
                                         </a>
                                     </div>
                                     @else
                                     <div class="img-hover-zoom">
-                                      <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}">
+                                      <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}">
                                         <img src="{{ asset('sion-1.jfif') }}" class="card-img-top">
                                       </a>
                                     </div>
                                     @endif
                                     <div class="card-body text-center">
                                         <h5 class="card-title"><a
-                                                href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}"
+                                                href="{{ route('posts.show', ['post' => $khotbah->id]) }}"
                                                 class="text-decoration-none text-dark">{{ ucwords($khotbah->title) }}</a>
                                         </h5>
                                         <small>{{ Carbon\Carbon::parse($khotbah->published_at)->isoFormat('dddd, D MMMM Y') }}</small>
                                         <p class="card-text pt-2">{{$khotbah->excerpt}}</p>
-                                        <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}"
+                                        <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}"
                                             class="btn btn-login">Baca Selengkapnya</a>
                                     </div>
                                 </div>

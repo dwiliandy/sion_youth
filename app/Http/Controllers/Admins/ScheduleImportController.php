@@ -26,7 +26,7 @@ class ScheduleImportController extends Controller
       'file.mimes' => 'Format tidak sesuai',
     ]);
     $file = $request->file('file')->store('import');
-    $sector = Hashids::decode($request->sector)[0];
+    $sector = $request->sector;
     $import = new SchedulesImport($sector);
     $import->import($file);
 
@@ -34,6 +34,6 @@ class ScheduleImportController extends Controller
       return back()->withFailures($import->failures());
     }
 
-    return redirect()->route('get-schedule', ['sector' => Hashids::encode($sector)])->with(['success' => 'Data berhasil diubah']);
+    return redirect()->route('get-schedule', ['sector' => $sector])->with(['success' => 'Data berhasil diubah']);
   }
 }

@@ -21,7 +21,7 @@ class NewsController extends Controller
     }
 
     public function show($id){
-      $news = News::find(Hashids::decode($id)[0]);
+      $news = News::find($id);
       return view('admin.news.show', compact(['news']));
     }
 
@@ -53,7 +53,7 @@ class NewsController extends Controller
     }
 
     public function edit($id){
-      $news = News::find(Hashids::decode($id)[0]);
+      $news = News::find($id);
       return view('admin.news.edit', compact(['news']) );
     }
 
@@ -82,7 +82,7 @@ class NewsController extends Controller
     }
 
     public function destroy($id){
-      $news = News::find(Hashids::decode($id)[0]);
+      $news = News::find($id);
       if($news->image){
         Storage::delete($news->image);
       }

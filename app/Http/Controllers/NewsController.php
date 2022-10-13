@@ -14,7 +14,7 @@ class NewsController extends Controller
     }
 
     public function show($id){
-      $news = News::find(Hashids::decode($id)[0]);
+      $news = News::find($id);
         $post_url = route('news.show', ['news' => $news->id]);
         $title = ucwords($news->title);
         $post_excerpt = $news->excerpt;

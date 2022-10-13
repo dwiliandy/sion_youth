@@ -131,34 +131,36 @@
                     <h5 class="home">Khotbah</h5>
                     <div class="row justify-content-start">
                         @if ($khotbahs->count() > 0)
-                        <div class="col-lg-4  pt-2">
-                          <div class="card">
-                              @if ($khotbah->image)
-                              <div class="img-hover-zoom">
-                                  <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}">
-                                      <img src="{{ asset('storage/'. $khotbah->image) }}" class="card-img-top">
-                                  </a>
+                        @foreach ($khotbahs as $khotbah)
+                          <div class="col-lg-4  pt-2">
+                            <div class="card">
+                                @if ($khotbah->image)
+                                <div class="img-hover-zoom">
+                                    <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}">
+                                        <img src="{{ asset('storage/'. $khotbah->image) }}" class="card-img-top">
+                                    </a>
+                                </div>
+                                @else
+                                <div class="img-hover-zoom">
+                                  <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}">
+                                    <img src="{{ asset('sion-1.jfif') }}" class="card-img-top">
+                                </a>
                               </div>
-                              @else
-                              <div class="img-hover-zoom">
-                                <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}">
-                                  <img src="{{ asset('sion-1.jfif') }}" class="card-img-top">
-                              </a>
+                                
+                                @endif
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><a
+                                            href="{{ route('posts.show', ['post' => $khotbah->id]) }}"
+                                            class="text-decoration-none text-dark">{{ ucwords($khotbah->title) }}</a>
+                                    </h5>
+                                    <small>{{ Carbon\Carbon::parse($khotbah->published_at)->isoFormat('dddd, D MMMM Y') }}</small>
+                                    <p class="card-text pt-2">{{$khotbah->excerpt}}</p>
+                                    <a href="{{ route('posts.show', ['post' => $khotbah->id]) }}"
+                                        class="btn btn-login">Baca Selengkapnya</a>
+                                </div>
                             </div>
-                              
-                              @endif
-                              <div class="card-body text-center">
-                                  <h5 class="card-title"><a
-                                          href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}"
-                                          class="text-decoration-none text-dark">{{ ucwords($khotbah->title) }}</a>
-                                  </h5>
-                                  <small>{{ Carbon\Carbon::parse($khotbah->published_at)->isoFormat('dddd, D MMMM Y') }}</small>
-                                  <p class="card-text pt-2">{{$khotbah->excerpt}}</p>
-                                  <a href="{{ route('posts.show', ['post' => Hashids::encode($khotbah->id)]) }}"
-                                      class="btn btn-login">Baca Selengkapnya</a>
-                              </div>
                           </div>
-                      </div>
+                        @endforeach
                         <div class="py-3 d-flex align-items-end flex-column">
                             <a class="text-right" href="{{ route('khotbah') }}">Lihat Semua Khotbah</a>
                         </div>
@@ -182,13 +184,13 @@
                           <div class="card">
                               @if ($article->image)
                               <div class="img-hover-zoom">
-                                  <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}">
+                                  <a href="{{ route('posts.show', ['post' => $article->id]) }}">
                                       <img src="{{ asset('storage/'. $article->image) }}" class="card-img-top">
                                   </a>
                               </div>
                               @else
                               <div class="img-hover-zoom">
-                                <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}">
+                                <a href="{{ route('posts.show', ['post' => $article->id]) }}">
                                   <img src="{{ asset('sion-1.jfif') }}" class="card-img-top">
                               </a>
                             </div>
@@ -196,12 +198,12 @@
                               @endif
                               <div class="card-body text-center">
                                   <h5 class="card-title"><a
-                                          href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}"
+                                          href="{{ route('posts.show', ['post' => $article->id]) }}"
                                           class="text-decoration-none text-dark">{{ ucwords($article->title) }}</a>
                                   </h5>
                                   <small>{{ Carbon\Carbon::parse($article->published_at)->isoFormat('dddd, D MMMM Y') }}</small>
                                   <p class="card-text pt-2">{{$article->excerpt}}</p>
-                                  <a href="{{ route('posts.show', ['post' => Hashids::encode($article->id)]) }}"
+                                  <a href="{{ route('posts.show', ['post' => $article->id]) }}"
                                       class="btn btn-login">Baca Selengkapnya</a>
                               </div>
                           </div>

@@ -37,15 +37,15 @@ class ScheduleController extends Controller
         'group.required' => 'Kolom harus diisi',
         'preacher.required' => 'Khadim harus diisi',
     ]);
-    $validatedData['sector_id'] = Hashids::decode($request->sector_id)[0];
+    $validatedData['sector_id'] = $request->sector_id;
     $validatedData['description'] = $request->description;
 
     $schedule = Schedule::create($validatedData);
-    return redirect()->route('get-schedule', ['sector' => Hashids::encode($schedule->sector->id)])->with(['success' => 'Data berhasil diubah']);
+    return redirect()->route('get-schedule', ['sector' => $schedule->sector->id])->with(['success' => 'Data berhasil diubah']);
   }
 
   public function edit($id){
-    $schedule = Schedule::find(Hashids::decode($id)[0]);
+    $schedule = Schedule::find($id);
     $groups = Group::all();
     return view('admin.schedule.edit', compact(['schedule','groups']));
   }
@@ -75,12 +75,12 @@ class ScheduleController extends Controller
     
     $validatedData['description'] = $request->description;
     Schedule::where('id', $schedule->id)->update($validatedData);
-    return redirect()->route('get-schedule', ['sector' => Hashids::encode($schedule->sector->id)])->with(['success' => 'Data berhasil diubah']);
+    return redirect()->route('get-schedule', ['sector' => $schedule->sector->id])->with(['success' => 'Data berhasil diubah']);
   }
 
   public function destroy($id){
-    $sector_id = Schedule::find(Hashids::decode($id)[0])->sector_id;
-    Schedule::destroy(Hashids::decode($id)[0]);
-    return redirect()->route('get-schedule', ['sector' => Hashids::encode($sector_id)])->with(['success' => 'Data berhasil dihapus']);
+    $sector_id = Schedule::find($id)->sector_id;
+    Schedule::destroy($id);
+    return redirect()->route('get-schedule', ['sector' => $sector_id])->with(['success' => 'Data berhasil dihapus']);
   }
 }

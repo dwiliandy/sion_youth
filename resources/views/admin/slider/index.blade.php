@@ -33,10 +33,10 @@
                       <td>
                         {{ $slider->order }}</td>
                       <td>
-                        <button type="button" class="badge bg-warning border-0 btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="{{ Hashids::encode($slider->id) }}">
+                        <button type="button" class="badge bg-warning border-0 btn-edit" data-bs-toggle="modal" data-bs-target="#modal-update" data-id="{{ $slider->id }}">
                           <i class="fas fa-edit"></i>
                         </button>
-                        <form action="{{ route('admin.sliders.destroy', ['slider' => Hashids::encode($slider->id)]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data"  method="post" class="d-inline">
+                        <form action="{{ route('admin.sliders.destroy', ['slider' => $slider->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data"  method="post" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data"  onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>

@@ -40,8 +40,8 @@
                       <td>{{ $schedule->group }}</td>
                       <td>{{ $schedule->preacher }}</td>
                       <td>
-                        <a href="{{ route('admin.schedules.edit', ['schedule' => Hashids::encode($schedule->id)]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data" class="badge bg-warning"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('admin.schedules.destroy', ['schedule' => Hashids::encode($schedule->id)]) }}" method="post" class="d-inline">
+                        <a href="{{ route('admin.schedules.edit', ['schedule' => $schedule->id]) }}" data-toggle="tooltip" data-placement="top" title="Edit Data" class="badge bg-warning"><i class="fas fa-edit"></i></a>
+                        <form action="{{ route('admin.schedules.destroy', ['schedule' => $schedule->id]) }}" method="post" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="badge bg-danger border-0" data-toggle="tooltip" data-placement="top" title="Hapus Data" onclick="return confirm('Yakin untuk menghapus data')"><i class="fas fa-eraser"></i></button>

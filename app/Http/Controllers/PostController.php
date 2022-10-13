@@ -11,7 +11,7 @@ use Torann\Hashids\Facade\Hashids;
 class PostController extends Controller
 {    
       public function show($id){
-        $post = Post::find(Hashids::decode($id)[0]);
+        $post = Post::find($id);
         $post_url = route('posts.show', ['post' => $post->id]);
         $title = ucwords($post->title);
         $post_excerpt = $post->excerpt;

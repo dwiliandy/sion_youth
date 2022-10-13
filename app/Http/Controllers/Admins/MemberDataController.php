@@ -54,7 +54,7 @@ class MemberDataController extends Controller
     }
 
     public function edit($id){
-      $member_data = MemberData::find(Hashids::decode($id)[0]);
+      $member_data = MemberData::find($id);
       $groups = Group::all();
       return view('admin.member_data.edit', compact(['member_data','groups']));
     }
@@ -87,13 +87,13 @@ class MemberDataController extends Controller
     }
 
     public function destroy($id){
-      $member_data = MemberData::find(Hashids::decode($id)[0]);
+      $member_data = MemberData::find($id);
       MemberData::destroy($member_data->id);
       return redirect()->route('admin.member_datas.index')->with(['success' => 'Data berhasil dihapus']);
     }
 
     public function isActive($id){
-      $member_data = MemberData::find(Hashids::decode($id)[0]);
+      $member_data = MemberData::find($id);
       if($member_data->is_active){
         $member_data->update(['is_active' => false]);
       }
