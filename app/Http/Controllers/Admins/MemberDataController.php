@@ -17,7 +17,7 @@ class MemberDataController extends Controller
   }
   
     public function index(){
-      $member_datas = MemberData::select('group', 'name', 'birth_date','birth_place','family_name', 'baptize','sidi', 'sex','id_number','id','is_active')->orderByRaw('CONVERT(kolom, SIGNED) asc')->get();
+      $member_datas = MemberData::select('group', 'name', 'birth_date','birth_place','family_name', 'baptize','sidi', 'sex','id_number','id','is_active')->get();
       return view('admin.member_data.index', compact(['member_datas']));
     }
 
