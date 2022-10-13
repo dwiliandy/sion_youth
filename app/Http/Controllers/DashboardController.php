@@ -23,7 +23,8 @@ class DashboardController extends Controller
       $articles = Category::where('name','artikel')->first()->posts->where('published',true)->take(6);
       $khotbahs = Category::where('name','khotbah')->first()->posts->where('published',true)->take(6);
       $schedules = Schedule::whereBetween('date', [$startDate, $endDate])->with('sector')->get();
-      $member_birthday = MemberData::where('is_active',true)->whereRaw("DAYOFYEAR(birth_date) BETWEEN $start AND $end")->orderByRaw('MONTH(birth_date)')->orderByRaw('DAY(birth_date)')->get();
+      // $member_birthday = MemberData::where('is_active',true)->whereRaw("DAYOFYEAR(birth_date) BETWEEN $start AND $end")->orderByRaw('MONTH(birth_date)')->orderByRaw('DAY(birth_date)')->get();
+      $member_birthday = MemberData::where('is_active',true)->get();
       return view('welcome',[
         'articles' => $articles,
         'khotbahs' => $khotbahs,
